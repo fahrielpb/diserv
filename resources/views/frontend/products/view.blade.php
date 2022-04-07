@@ -64,11 +64,11 @@
     <label>Quantity</label>
     <div class="input-group mb-3 input-spinner">
       <div class="input-group-append">
-        <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
+        <button class="btn btn-light decrement-btn" type="button" id="button-minus"> &minus; </button>
       </div>
-      <input type="text" class="form-control" value="1">
+      <input type="text" class="form-control qty-input" value="1">
       <div class="input-group-prepend">
-        <button class="btn btn-light" type="button" id="button-plus"> + </button>
+        <button class="btn btn-light increment-btn" type="button" id="button-plus"> + </button>
       </div> 
     </div>
   </div> <!-- col.// -->
@@ -115,4 +115,38 @@
 
 </div> <!-- container .//  -->
 </section>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            $('.increment-btn').click(function (e) {
+                e.preventDefault();
+
+                var inc_value = $('.qty-input').val();
+                var value = parseInt(inc_value, 10);
+                value = isNaN(value) ? 0 : value;
+
+                if(value < 24)
+                {
+                  value++;
+                  $('.qty-input').val(value);
+                }
+            });
+
+            $('.decrement-btn').click(function (e) {
+                e.preventDefault();
+
+                var dec_value = $('.qty-input').val();
+                var value = parseInt(dec_value, 10);
+                value = isNaN(value) ? 0 : value;
+
+                if(value > 1)
+                {
+                  value--;
+                  $('.qty-input').val(value);
+                }
+            });
+        });
+    </script>
 @endsection
