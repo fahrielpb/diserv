@@ -1,0 +1,42 @@
+<footer class="section-footer border-top">
+	<div class="container">
+		<section class="footer-top  padding-y">
+			<div class="row">
+				<aside class="col-md-4 col-12">
+					<article class="mr-md-4">
+						<h5 class="title">Contact us</h5>
+						<ul class="list-icon">
+							<li> <i class="icon fa fa-map-marker"> </i>Jl. Menara Air 1 No.26, Sekeloa, Kecamatan Coblong, Kota Bandung, Jawa Barat 40113 </li>
+							{{-- <li> <i class="icon fa fa-envelope"> </i> info@example.com</li> --}}
+							<li> <i class="icon fa fa-phone"> </i> +62 813-5544-3666</li>
+							<li> <i class="icon fa fa-clock"> </i>Mon-Sat 10:00pm - 7:00pm</li>
+						</ul>
+					</article>
+				</aside>
+				<aside class="col-md col-6">
+					<h5 class="title">Information</h5>
+					<ul class="list-unstyled">
+						<li> <a href="#">How to Buy</a></li>
+						<li> <a href="#">Terms & Conditions</a></li>
+						<li> <a href="#">Shipping Cost</a></li>
+					</ul>
+				</aside>
+				
+				<aside class="col-md-4 col-12">
+					<h5 class="title">Follow us on social media</h5>  
+					<div>
+						<a href="#" class="btn btn-icon btn-light"><i class="fab fa-facebook-f"></i></a>
+						<a href="#" class="btn btn-icon btn-light"><i class="fab fa-twitter"></i></a>
+						<a href="https://www.instagram.com/diservcatalog/" class="btn btn-icon btn-light"><i class="fab fa-instagram"></i></a>
+						<a href="#" class="btn btn-icon btn-light"><i class="fab fa-youtube"></i></a>
+					</div>
+
+				</aside>
+			</div> <!-- row.// -->
+		</section>	<!-- footer-top.// -->
+
+    <section class="footer-copyright border-top">
+      <p class="text-muted"> &copy 2022 Diserv Indonesia </p>
+    </section>
+	</div><!-- //container -->
+</footer>
