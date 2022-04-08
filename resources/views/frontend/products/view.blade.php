@@ -14,12 +14,11 @@
 	</ol>  
 	</nav>
 </div> <!-- container //  -->
-</section>
 
 <section class="section-content padding-y bg">
   <div class="container">
-
-<div class="card">
+  <div class="card product_data">
+    {{-- <div class="card-body"> --}}
 	<div class="row no-gutters">
 		<aside class="col-sm-6 border-right">
 <article class="gallery-wrap"> 
@@ -61,6 +60,7 @@
 
 <div class="row">
   <div class="form-group col-md flex-grow-0">
+    <input type="hidden" value="{{ $products->id }}" class="prod_id">
     <label>Quantity</label>
     <div class="input-group mb-3 input-spinner">
       <div class="input-group-append">
@@ -101,7 +101,7 @@
 
 <div class="form-row">
 	<div class="col">
-		<a href="#" class="btn  btn-primary w-100"> Add to cart <i class="fas fa-shopping-cart"></i>  </a>
+		<a href="#" class="btn btn-primary w-100 addToCartBtn"> Add to cart <i class="fas fa-shopping-cart"></i>  </a>
 	</div> <!-- col.// -->
 	<div class="col">
 		<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i>  </a>
@@ -111,6 +111,7 @@
 </article> <!-- product-info-aside .// -->
 		</main> <!-- col.// -->
 	</div> <!-- row.// -->
+{{-- </div> <!-- card-body --> --}}
 </div> <!-- card.// -->
 
 </div> <!-- container .//  -->
@@ -119,7 +120,33 @@
 
 @section('scripts')
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
+
+          $('.addToCartBtn').click(function (e) {
+              e.preventDefault();
+
+              var product_id = $(this).closest('.product_data').find('.prod_id').val();
+              var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+
+              $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+
+              $.ajax({
+                type: "POST",
+                url: "/add-to-cart",
+                data: {
+                  'product_id': product_id,
+                  'product_qty': product_qty,
+                },
+                success: function(response) {
+                    swal(response.status);
+                }
+              });
+          });
+
             $('.increment-btn').click(function (e) {
                 e.preventDefault();
 
