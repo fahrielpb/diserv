@@ -19,11 +19,14 @@ My Cart
 
     <section class="section-content padding-y bg">
         <div class="container">
+            @php
+                $total = 0;
+            @endphp
             @foreach($cartitems as $item)
                 <div class="product_data">
                     <div class="row">
-                        <main class="col-md-9">
-                            <article class="card card-body mb-3">
+                        <aside class="col-md-12">
+                            <article class="card card-body mb-2">
                                 <div class="row align-items-center">
                                     <div class="col-md-6">
                                         <figure class="itemside">
@@ -39,17 +42,15 @@ My Cart
                                     <div class="col">
                                         <div class="form-group col-md flex-grow-0">
                                             <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
-                                            <label>Quantity</label>
+                                            {{-- <label>Quantity</label> --}}
                                             <div class="input-group mb-3 input-spinner">
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-light decrement-btn" type="button"
-                                                        id="button-minus"> &minus; </button>
-                                                </div> 
+                                                    <button class="btn btn-light changeQuantity decrement-btn"> &minus; </button>
+                                                </div>
                                                 <input type="text" name="quantity" class="form-control qty-input"
                                                     value="{{ $item->prod_qty }}">
                                                 <div class="input-group-prepend">
-                                                    <button class="btn btn-light increment-btn" type="button"
-                                                        id="button-plus"> + </button>
+                                                    <button class="btn btn-light changeQuantity increment-btn"> + </button>
                                                 </div>
                                             </div>
                                         </div> <!-- col.// -->
@@ -58,12 +59,42 @@ My Cart
                                         <div class="price h5"> @currency($item->products->selling_price) </div>
                                     </div>
                                     <div class="col flex-grow-0 text-right">
-                                        <button class="btn btn-light delete-cart-item"> <i class="fa fa-times"></i> </button>
+                                        <button class="btn btn-light delete-cart-item"> <i class="fa fa-times"></i>
+                                        </button>
                                     </div>
                             </article> <!-- card .// -->
+                        </aside>
                     </div> <!-- row.// -->
                 </div>
+                @php
+                    $total += $item->products->selling_price * $item->prod_qty ;
+                @endphp
             @endforeach
+
+            {{-- total --}}
+            <div class="row">
+            <aside class="col-md-12">
+                <div class="card card-body mt-3">
+                    {{-- <dl class="dlist-align">
+                      <dt>Total price:</dt>
+                      <dd class="text-right">$69.00</dd>
+                    </dl>
+                    <dl class="dlist-align">
+                      <dt>Discount:</dt>
+                      <dd class="text-right text-danger">- $13.00</dd>
+                    </dl> --}}
+                    <dl class="dlist-align">
+                      <dt>Total:</dt>
+                      <dd class="text-right text-dark b"><strong>@currency($total)</strong></dd>
+                    </dl>
+                    <hr>
+                    <a href="#" class="btn btn-primary btn-block"> Make Purchase </a>
+                    <a href="{{ url('/') }}" class="btn btn-light btn-block">Continue Shopping</a>
+                </div> <!-- card-body.// -->
+            </aside> <!-- col.// -->
+            </div> {{-- row --}}
+            
         </div> <!-- container .//  -->
     </section>
+
     @endsection
