@@ -36,6 +36,7 @@
     
     <!-- custom javascript -->
     <script src="{{ asset('frontend/js/script.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('frontend/js/custom.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript">
     /// some script

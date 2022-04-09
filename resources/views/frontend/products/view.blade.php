@@ -8,8 +8,8 @@
 	<h2 class="title-page">Detail Products</h2>
 	<nav>
 	<ol class="breadcrumb text-white">
-	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item"><a href="#">{{ $products->category->name }}</a></li>
+	    <li class="breadcrumb-item"><a href="{{ url('category') }}">All Categories</a></li>
+	    <li class="breadcrumb-item"><a href="{{ url('view-category/'.$products->category->slug) }}">{{ $products->category->name }}</a></li>
 	    <li class="breadcrumb-item active" aria-current="page">{{ $products->name }}</li>
 	</ol>  
 	</nav>
@@ -116,64 +116,4 @@
 
 </div> <!-- container .//  -->
 </section>
-@endsection
-
-@section('scripts')
-    <script>
-        $(document).ready(function () {
-
-          $('.addToCartBtn').click(function (e) {
-              e.preventDefault();
-
-              var product_id = $(this).closest('.product_data').find('.prod_id').val();
-              var product_qty = $(this).closest('.product_data').find('.qty-input').val();
-
-              $.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                  }
-              });
-
-              $.ajax({
-                type: "POST",
-                url: "/add-to-cart",
-                data: {
-                  'product_id': product_id,
-                  'product_qty': product_qty,
-                },
-                success: function(response) {
-                    swal(response.status);
-                }
-              });
-          });
-
-            $('.increment-btn').click(function (e) {
-                e.preventDefault();
-
-                var inc_value = $('.qty-input').val();
-                var value = parseInt(inc_value, 10);
-                value = isNaN(value) ? 0 : value;
-
-                if(value < 24)
-                {
-                  value++;
-                  $('.qty-input').val(value);
-                }
-            });
-
-            $('.decrement-btn').click(function (e) {
-                e.preventDefault();
-
-                var dec_value = $('.qty-input').val();
-                var value = parseInt(dec_value, 10);
-                value = isNaN(value) ? 0 : value;
-
-                if(value > 1)
-                {
-                  value--;
-                  $('.qty-input').val(value);
-                }
-            });
-        });
-    </script>
 @endsection

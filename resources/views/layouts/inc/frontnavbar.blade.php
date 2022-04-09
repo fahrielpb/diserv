@@ -21,7 +21,7 @@
 	</div> <!-- col.// -->
 	<div class="col-lg-5 col-xl-4 col-sm-8 col-md-4 col-7">
 		<div class="d-flex justify-content-end">
-			<a href="#" class="widget-header mr-3">
+			<a href="{{ url('cart') }}" class="widget-header mr-3">
 				<div class="icon">
 					<i class="icon-sm rounded-circle border fa fa-shopping-cart"></i>
 					<span class="notify">0</span>
