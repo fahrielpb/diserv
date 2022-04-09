@@ -42,6 +42,7 @@ My Cart
                                     <div class="col">
                                         <div class="form-group col-md flex-grow-0">
                                             <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
+                                            @if ($item->products->qty > $item->prod_qty)                                            
                                             {{-- <label>Quantity</label> --}}
                                             <div class="input-group mb-3 input-spinner">
                                                 <div class="input-group-append">
@@ -53,6 +54,12 @@ My Cart
                                                     <button class="btn btn-light changeQuantity increment-btn"> + </button>
                                                 </div>
                                             </div>
+                                            @php
+                                            $total += $item->products->selling_price * $item->prod_qty ;
+                                        @endphp
+                                        @else
+                                        <h6>Out of stock</h6>
+                                            @endif
                                         </div> <!-- col.// -->
                                     </div> <!-- col.// -->
                                     <div class="col">
@@ -66,9 +73,7 @@ My Cart
                         </aside>
                     </div> <!-- row.// -->
                 </div>
-                @php
-                    $total += $item->products->selling_price * $item->prod_qty ;
-                @endphp
+               
             @endforeach
 
             {{-- total --}}

@@ -99,10 +99,19 @@
   </div> <!-- col.// -->
 </div> <!-- row.// -->
 
+
+
 <div class="form-row">
-	<div class="col">
+  @if ($products->qty > 0)
+  <div class="col">
 		<a href="#" class="btn btn-primary w-100 addToCartBtn"> Add to cart <i class="fas fa-shopping-cart"></i>  </a>
 	</div> <!-- col.// -->
+  @else
+  <div class="col">
+		<a href="#" class="btn btn-primary disabled w-100 addToCartBtn" role="button"> Add to cart <i class="fas fa-shopping-cart"></i>  </a>
+	</div> <!-- col.// -->
+  @endif
+	
 	<div class="col">
 		<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i>  </a>
 	</div> <!-- col.// -->
