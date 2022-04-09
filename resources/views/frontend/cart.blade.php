@@ -88,7 +88,7 @@ My Cart
                       <dd class="text-right text-dark b"><strong>@currency($total)</strong></dd>
                     </dl>
                     <hr>
-                    <a href="#" class="btn btn-primary btn-block"> Make Purchase </a>
+                    <a href="{{ url('checkout') }}" class="btn btn-primary btn-block"> Checkout </a>
                     <a href="{{ url('/') }}" class="btn btn-light btn-block">Continue Shopping</a>
                 </div> <!-- card-body.// -->
             </aside> <!-- col.// -->

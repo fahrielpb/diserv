@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,7 @@ Route::post('update-cart', [CartController::class, 'updatecart']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('cart', [CartController::class, 'viewcart']);
+    Route::get('checkout', [CheckoutController::class, 'index']);
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
