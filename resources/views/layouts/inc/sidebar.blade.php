@@ -21,7 +21,7 @@
       <li class="nav-item">
         <a class="nav-link text-white {{ Request::is('categories') ? 'active bg-gradient-primary':'' }}" href="{{ url('categories') }}">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">person</i>
+            <i class="material-icons opacity-10">apps</i>
             {{-- <p> Categories</p> --}}
           </div>
           <span class="nav-link-text ms-1">Categories</span>
@@ -31,17 +31,19 @@
       <li class="nav-item">
         <a class="nav-link text-white {{ Request::is('add-category') ? 'active bg-gradient-primary':'' }}"" href="{{ url('add-category') }}">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">person</i>
+            <i class="material-icons opacity-10">apps</i>
             {{-- <p> Categories</p> --}}
           </div>
-          <span class="nav-link-text ms-1">Add Category</span>
+          <span class="nav-link-text ms-1">+ Add Category</span>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link text-white {{ Request::is('products') ? 'active bg-gradient-primary':'' }}" href="{{ url('products') }}">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">person</i>
+            <span class="material-icons">
+              checkroom
+              </span>
             {{-- <p> Categories</p> --}}
           </div>
           <span class="nav-link-text ms-1">Products</span>
@@ -51,19 +53,30 @@
       <li class="nav-item">
         <a class="nav-link text-white {{ Request::is('add-products') ? 'active bg-gradient-primary':'' }}"" href="{{ url('add-products') }}">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">person</i>
+            <span class="material-icons">
+              checkroom
+              </span>
             {{-- <p> Categories</p> --}}
           </div>
-          <span class="nav-link-text ms-1">Add Products</span>
+          <span class="nav-link-text ms-1">+ Add Products</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link text-white " href="#">
+        <a class="nav-link text-white" {{ Request::is('orders') ? 'active bg-gradient-primary':'' }}"" href="{{ url('orders') }}">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">table_view</i>
+            <i class="material-icons opacity-10">shopping_cart</i>
           </div>
-          <span class="nav-link-text ms-1">Tables</span>
+          <span class="nav-link-text ms-1">Orders</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white " {{ Request::is('users') ? 'active bg-gradient-primary':'' }}"" href="{{ url('users') }}">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="material-icons opacity-10">person</i>
+          </div>
+          <span class="nav-link-text ms-1">Users</span>
         </a>
       </li>
     </ul>
