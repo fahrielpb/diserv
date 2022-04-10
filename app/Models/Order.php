@@ -12,7 +12,6 @@ class Order extends Model
     protected $table = 'orders';
     protected $fillable = [
         'user_id',
-        // 'total_price',
         'fname',
         'lname',
         'email',
@@ -23,6 +22,7 @@ class Order extends Model
         'kecamatan',
         'kelurahan',
         'kode_pos',
+        'total_price',
         'status',
         'message',
         'tracking_no',

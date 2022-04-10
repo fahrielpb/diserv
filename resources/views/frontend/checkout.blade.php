@@ -94,7 +94,11 @@ Checkout Products
                                 <dd class="h5">@currency($total)</dd>
                             </dl>
                             <hr>
+                            @if($total>1)
                             <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+                            @else
+                            <a href="#" class="btn btn-primary btn-block disabled" role="button">Cart Empty</a>
+                            @endif
                         </div>
                     </div>
                 </div>

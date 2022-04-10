@@ -104,6 +104,7 @@
 		          <a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown"> Shop</a>
 		          <div class="dropdown-menu">
 		            {{-- <a class="dropdown-item" href="{{ url('view-category/'.$cate->slug) }}">Tshirt</a> --}}
+		            <a class="dropdown-item" href="{{ url('category') }}">All Categories</a>
 		            <a class="dropdown-item" href="#">Tshirt</a>
 		            <a class="dropdown-item" href="#">Shirt</a>
 		            <a class="dropdown-item" href="#">Outerwear</a>

@@ -22,4 +22,8 @@ class Category extends Model
         'meta_keywords' 
     ];
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

@@ -43,6 +43,18 @@ class CheckoutController extends Controller
         $order->kecamatan = $request->input('kecamatan');
         $order->kelurahan = $request->input('kelurahan');
         $order->kode_pos = $request->input('kode_pos');
+
+        // to calculate total price
+        $total = 0;
+        $cartitems_total = Cart::where('user_id', Auth::id())->get();
+        foreach($cartitems_total as $prod)
+        {
+            // $total += $prod->products->selling_price;
+            $total += $prod->products->selling_price * $prod->prod_qty;
+        }
+
+        $order->total_price = $total;
+
         $order->tracking_no = 'dsrv'.rand(1111,9999);
         $order->save();
 

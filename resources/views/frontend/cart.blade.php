@@ -93,7 +93,11 @@ My Cart
                       <dd class="text-right text-dark b"><strong>@currency($total)</strong></dd>
                     </dl>
                     <hr>
+                    @if($cartitems->count()>0)
                     <a href="{{ url('checkout') }}" class="btn btn-primary btn-block"> Checkout </a>
+                    @else
+                    <a href="{{ url('checkout') }}" class="btn btn-primary btn-block disabled" role="button"> Checkout </a>
+                    @endif
                     <a href="{{ url('/') }}" class="btn btn-light btn-block">Continue Shopping</a>
                 </div> <!-- card-body.// -->
             </aside> <!-- col.// -->
