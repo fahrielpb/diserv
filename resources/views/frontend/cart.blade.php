@@ -42,7 +42,7 @@ My Cart
                                     <div class="col">
                                         <div class="form-group col-md flex-grow-0">
                                             <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
-                                            @if ($item->products->qty > $item->prod_qty)                                            
+                                            @if ($item->products->qty >= $item->prod_qty)                                            
                                             {{-- <label>Quantity</label> --}}
                                             <div class="input-group mb-3 input-spinner">
                                                 <div class="input-group-append">
