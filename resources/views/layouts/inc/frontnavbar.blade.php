@@ -62,6 +62,9 @@
 				<a class="dropdown-item" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
 					{{ Auth::user()->name }}
 			</a>
+				<a class="dropdown-item" href="{{ url('my-orders') }}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+					My Orders 
+			</a>
 					<hr class="dropdown-divider">
 					{{-- <a class="dropdown-item" href="#">Log out</a> --}}
 					<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -97,9 +100,10 @@
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dropdown6">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
 		<div class="collapse navbar-collapse" id="dropdown6">
 		      <ul class="navbar-nav mr-auto">
+		        <li class="nav-item"> <a class="nav-link" href="{{ url('/') }}">Home</a>  </li>
+
 		        <li class="nav-item dropdown">
 		          <a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown"> Shop</a>
 		          <div class="dropdown-menu">
@@ -113,7 +117,6 @@
 		            <a class="dropdown-item" href="#">Accesories</a>
 		          </div>
 		        </li>
-		        <li class="nav-item"> <a class="nav-link" href="{{ url('category') }}">Category</a>  </li>
 		      </ul>
 	   </div> <!-- collapse .// -->
   </div> <!-- container .// -->

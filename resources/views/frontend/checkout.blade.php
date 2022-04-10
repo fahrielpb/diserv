@@ -98,6 +98,7 @@ Checkout Products
                             <button type="submit" class="btn btn-primary btn-block">Place Order</button>
                             @else
                             <a href="#" class="btn btn-primary btn-block disabled" role="button">Cart Empty</a>
+                            <a href="{{ url('/') }}" class="btn btn-light btn-block">Continue Shopping</a>
                             @endif
                         </div>
                     </div>
