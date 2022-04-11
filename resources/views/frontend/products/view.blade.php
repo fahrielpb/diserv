@@ -100,7 +100,6 @@
 </div> <!-- row.// -->
 
 
-
 <div class="form-row">
   @if ($products->qty > 0)
   <div class="col">
@@ -113,7 +112,7 @@
   @endif
 	
 	<div class="col">
-		<a href="#" class="btn  btn-light"> <i class="fas fa-heart"></i>  </a>
+		<a href="#" class="btn btn-light addToWishlist"> <i class="fas fa-heart"></i>  </a>
 	</div> <!-- col.// -->
 </div> <!-- row.// -->
 

@@ -27,7 +27,7 @@
 					<span class="notify">0</span>
 				</div>
 			</a>
-			<a href="#" class="widget-header mr-3">
+			<a href="{{ url('wishlist') }}" class="widget-header mr-3">
 				<div class="icon">
 					<i class="icon-sm rounded-circle border fa fa-heart"></i>
 				</div>
