@@ -24,6 +24,8 @@ Route::get('category/{cate_slug}/{prod_slug}', [FrontendController::class, 'prod
 Auth::routes();
 
 Route::get('load-cart-data',[CartController::class, 'cartcount']);
+Route::get('load-wishlist-count',[WishlistController::class, 'wishlistcount']);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     loadcart();
+    loadwishlist()
 
     $.ajaxSetup({
         headers: {
@@ -15,6 +16,17 @@ $(document).ready(function () {
             success: function (response) {
                 $('.cart-count').html('');
                 $('.cart-count').html(response.count);
+            }
+        });
+    }
+
+    function loadwishlist() {
+        $.ajax({
+            method: "GET",
+            url: "/load-wishlist-count",
+            success: function (response) {
+                $('.wishlist-count').html('');
+                $('.wishlist-count').html(response.count);
             }
         });
     }
@@ -83,6 +95,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 swal(response.status);
+                loadwishlist()
             }
         });
     });

@@ -30,6 +30,7 @@
 			<a href="{{ url('wishlist') }}" class="widget-header mr-3">
 				<div class="icon">
 					<i class="icon-sm rounded-circle border fa fa-heart"></i>
+					<span class="notify wishlist-count">0</span>
 				</div>
 			</a>
 			<!-- Authentication Links -->
