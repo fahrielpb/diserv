@@ -22,6 +22,9 @@ Route::get('view-category/{slug}', [FrontendController::class, 'viewcategory']);
 Route::get('category/{cate_slug}/{prod_slug}', [FrontendController::class, 'productview']);
 
 Auth::routes();
+
+Route::get('load-cart-data',[CartController::class, 'cartcount']);
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('add-to-cart', [CartController::class, 'addProduct']);
