@@ -23,12 +23,16 @@ My Orders
                                 <p><span class="b"> {{ $orders->fname }} {{ $orders->lname }}</span><br>
                                     Phone <span class="b">{{ $orders->phone }} </span><br> Email <span
                                         class="b">{{ $orders->email }}</span> <br>
-                                    Location: {{ $orders->address1 }},
-                                    {{ $orders->address2 }},
-                                    {{ $orders->provinsi }},
-                                    {{ $orders->kecamatan }},
-                                    {{ $orders->kelurahan }}, <br>
-                                    Kode Pos {{ $orders->kode_pos }}
+                                    {{ $orders->address1 }},
+                                    {{ $orders->address2 }} 
+                                    <br>
+                                    Kel/Desa {{ $orders->kelurahan }},
+                                    Kecamatan {{ $orders->kecamatan }},
+                                    {{ $orders->kota }},
+                                    {{ $orders->provinsi }}
+                                
+                                     <br>
+                                    Postal code {{ $orders->kode_pos }}
                                 </p>
                             </div>
                             <div class="col-md-4">

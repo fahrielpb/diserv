@@ -9,12 +9,12 @@ My Cart
 <section class="section-pagetop bg">
     <div class="container">
         <h2 class="title-page">My Cart</h2>
-        <nav>
+        {{-- <nav>
             <ol class="breadcrumb text-white">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item"><a href="{{ url('cart') }}">Cart</a></li>
             </ol>
-        </nav>
+        </nav> --}}
     </div> <!-- container //  -->
 
     <section class="section-content padding-y bg">

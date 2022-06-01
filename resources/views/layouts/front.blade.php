@@ -17,6 +17,7 @@
 
     <!-- jQuery -->
     <script src="{{ asset('frontend/js/jquery-2.0.0.min.js') }}" type="text/javascript"></script>
+    
     <!-- Bootstrap4 files-->
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
     <link href="{{ asset('frontend/css/bootstrap.css') }}" rel="stylesheet" type="text/css"/>
@@ -35,9 +36,7 @@
     <link href="{{ asset('frontend/css/responsive.css') }}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
     
     <!-- custom javascript -->
-    <script src="{{ asset('frontend/js/script.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/custom.js') }}" type="text/javascript"></script>
-
+    {{-- <script src="{{ asset('frontend/js/script.js') }}" type="text/javascript"></script> --}}
     <script type="text/javascript">
     /// some script
 
@@ -59,8 +58,11 @@
 
     @include('layouts.inc.frontfooter')
 
+  {{-- <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}" defer></script> --}}
   <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}" defer></script>
   <script src="{{ asset('frontend/js/script.js') }}" defer></script>
+  <script src="{{ asset('frontend/js/custom.js') }}" defer></script>
+  <script src="{{ asset('frontend/js/checkout.js') }}" defer></script>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 

@@ -20,6 +20,7 @@ class Order extends Model
         'address1',
         'address2',
         'provinsi',
+        'kota',
         'kecamatan',
         'kelurahan',
         'kode_pos',

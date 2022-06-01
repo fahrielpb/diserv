@@ -108,14 +108,18 @@
 		        <li class="nav-item dropdown">
 		          <a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown"> Shop</a>
 		          <div class="dropdown-menu">
-		            {{-- <a class="dropdown-item" href="{{ url('view-category/'.$cate->slug) }}">Tshirt</a> --}}
-		            <a class="dropdown-item" href="{{ url('category') }}">All Categories</a>
-		            <a class="dropdown-item" href="#">Tshirt</a>
+								<a class="dropdown-item b" href="{{ url('category/') }}">All Categories</a>
+  							@foreach ($categories as $cate) 
+		            <a class="dropdown-item" href="{{ url('view-category/'.$cate->slug) }}">{{ $cate->name }}</a>
+								@endforeach
+		            {{-- <a class="dropdown-item" href="#">Tshirt</a>
 		            <a class="dropdown-item" href="#">Shirt</a>
-		            <a class="dropdown-item" href="#">Outerwear</a>
+		            <a class="dropdown-item" href="#">Sweatshirt</a>
+		            <a class="dropdown-item" href="#">Jacket</a>
 		            <a class="dropdown-item" href="#">Pants</a>
 		            <a class="dropdown-item" href="#">Bags</a>
 		            <a class="dropdown-item" href="#">Accesories</a>
+		            <a class="dropdown-item" href="#">Diserv for Kids</a> --}}
 		          </div>
 		        </li>
 		      </ul>

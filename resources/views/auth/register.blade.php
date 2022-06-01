@@ -11,6 +11,7 @@
             @csrf
             <div class="form-row">
             <div class="form-group col-md-6">
+            {{-- <div class="form-group"> --}}
                 <label>{{ __('First Name') }}</label>
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
                     value="{{ old('name') }}" required autocomplete="name" autofocus>

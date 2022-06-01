@@ -11,8 +11,7 @@
       <div class="container">
       
       <header class="section-heading">
-        <a href="#" class="btn btn-outline-primary float-right">See all</a>
-        <h3 class="section-title">Popular Products</h3>
+        <h3 class="section-title">NEW ARRIVALS</h3>
       </header><!-- sect-heading -->
         
       <div class="row">
@@ -28,7 +27,11 @@
             </div>
          </div>
         @endforeach
-        
+        <div class="w-100 text-center">
+          <a href="{{ url('all-product') }}" class="btn btn-outline-primary ">See All Products</a>
+        </div>
       </div><!-- container // -->
+      
       </section>
+      
 @endsection

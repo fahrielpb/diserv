@@ -17,48 +17,82 @@ Checkout Products
                             <div class="row checkout-form">
                                 <div class="form-group col-sm-6">
                                     <label for="">First Name</label>
-                                    <input type="text" name="fname" value="{{ Auth::user()->name }}" placeholder="First Name" class="form-control">
+                                    <input type="text" name="fname" value="{{ Auth::user()->name }}" placeholder="First Name" class="form-control fname">
+                                    <span id="fname_error" class="text-danger"></span>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label>Last Name</label>
-                                    <input type="text" name="lname" value="{{ Auth::user()->lname }}" placeholder="Last Name" class="form-control">
+                                    <input type="text" name="lname" value="{{ Auth::user()->lname }}" placeholder="Last Name" class="form-control lname">
+                                    <span id="lname_error" class="text-danger"></span>
+
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label>Email</label>
-                                    <input type="email" name="email" value="{{ Auth::user()->email }}" placeholder="example@gmail.com" class="form-control">
+                                    <input type="email" name="email" value="{{ Auth::user()->email }}" placeholder="example@gmail.com" class="form-control email">
+                                    <span id="email_error" class="text-danger"></span>
+
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label>Phone</label>
-                                    <input type="text" name="phone" value="{{ Auth::user()->phone }}" value="+62" class="form-control">
+                                    <input type="text" name="phone" value="{{ Auth::user()->phone }}" value="+62" class="form-control phone">
+                                    <span id="phone_error" class="text-danger"></span>
+
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label>Address 1</label>
-                                    <input type="text" name="address1" value="{{ Auth::user()->address1 }}" placeholder="Address 1" class="form-control">
+                                    <input type="text" name="address1" value="{{ Auth::user()->address1 }}" placeholder="Address 1" class="form-control address1">
+                                    <span id="address1_error" class="text-danger"></span>
+
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label>Address 2</label>
-                                    <input type="text" name="address2" value="{{ Auth::user()->address2 }}" placeholder="Address 2" class="form-control">
+                                    <input type="text" name="address2" value="{{ Auth::user()->address2 }}" placeholder="Address 2" class="form-control address2">
+                                    <span id="address2_error" class="text-danger"></span>
+
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label>Provinsi</label>
-                                    <input type="text" name="provinsi" value="{{ Auth::user()->provinsi }}" placeholder="Provinsi" class="form-control">
+                                    <label>City</label>
+                                    <input type="text" name="kota" value="{{ Auth::user()->kota }}" placeholder="City" class="form-control kota">
+                                    <span id="kota_error" class="text-danger"></span>
+
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label>Kecamatan</label>
-                                    <input type="text" name="kecamatan" value="{{ Auth::user()->kecamatan }}" placeholder="Kecamatan" class="form-control">
+                                    <label>Province</label>
+                                    <input type="text" name="provinsi" value="{{ Auth::user()->provinsi }}" placeholder="Province" class="form-control provinsi">
+                                    <span id="provinsi_error" class="text-danger"></span>
+
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label>Kelurahan/Desa</label>
-                                    <input type="text" name="kelurahan" value="{{ Auth::user()->kelurahan }}" placeholder="Kelurahan/Desa" class="form-control">
+                                    <label>Subdistrict</label>
+                                    <input type="text" name="kecamatan" value="{{ Auth::user()->kecamatan }}" placeholder="Subdistrict" class="form-control kecamatan">
+                                    <span id="kecamatan_error" class="text-danger"></span>
+
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label>Ward/Village</label>
+                                    <input type="text" name="kelurahan" value="{{ Auth::user()->kelurahan }}" placeholder="Ward/Village" class="form-control kelurahan">
+                                    <span id="kelurahan_error" class="text-danger"></span>
+
                                 </div>
                                 <div class="form-group col-sm-6"> 
-                                    <label>Kode Pos</label>
-                                    <input type="text" name="kode_pos" value="{{ Auth::user()->kode_pos }}" placeholder="Kode Pos" class="form-control">
+                                    <label>Postal Code</label>
+                                    <input type="text" name="kode_pos" value="{{ Auth::user()->kode_pos }}" placeholder="Postal Code" class="form-control kode_pos">
+                                    <span id="kode_pos_error" class="text-danger"></span>
+
                                 </div>
                             </div> <!-- row.// -->
                     </div> <!-- card-body.// -->
                 </article> <!-- card.// -->
+
+                <article class="card mb-4">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Shipping Service</h4>
+                    </div> <!-- card-body.// -->
+                </article> <!-- card.// -->
+
             </main> <!-- col.// -->
+
+
 
             <aside class="col-md-4">
                 <div class="card shadow">
@@ -90,12 +124,18 @@ Checkout Products
                         <div class="col">
                             <hr>
                             <dl class="dlist-align">
-                                <dt>Total:</dt>
+                                <dt>Shipping Cost :</dt>
+                                {{-- <dd class="h6">@currency($total)</dd> --}}
+                            </dl>
+                            <dl class="dlist-align">
+                                <dt>Total :</dt>
                                 <dd class="h5">@currency($total)</dd>
                             </dl>
                             <hr>
                             @if($total>1)
-                            <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+                            <button type="submit" class="btn btn-primary btn-block">Cash On Delivery</button>
+                            <button type="button" class="btn btn-primary btn-block pay-btn">Pay Now</button>
+
                             @else
                             <a href="#" class="btn btn-primary btn-block disabled" role="button">Cart Empty</a>
                             <a href="{{ url('/') }}" class="btn btn-light btn-block">Continue Shopping</a>
@@ -110,3 +150,15 @@ Checkout Products
     </div> <!-- container .//  -->
 </section>
 @endsection
+
+@section ('scripts')
+<!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
+<script type="text/javascript"
+src="https://app.sandbox.midtrans.com/snap/snap.js"
+data-client-key="Mid-client-Ltl8EVn8FA50esva"></script>
+<!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
+@endsection
+
+
+
+

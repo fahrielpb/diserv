@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,8 +14,10 @@ class WishlistController extends Controller
     public function index()
     {
         $wishlist = Wishlist::where('user_id', Auth::id())->get();
+        $categories = Category::get();
+
         // $wishlist = Wishlist::where('user_id', Auth::id())->first();
-        return view('frontend.wishlist', compact('wishlist'));
+        return view('frontend.wishlist', compact('wishlist','categories'));
     }
 
     public function add(Request $request)
@@ -28,14 +31,14 @@ class WishlistController extends Controller
                 $wish->prod_id = $prod_id;
                 $wish->user_id = Auth::id();
                 $wish->save();
-                return response()->json(['status' => "Produk ditambahkan ke Wishlist!"]);
+                return response()->json(['status' => "Product added to Wishlist!"]);
             }
             else{
-                return response()->json(['status' => "Produk tidak ada"]);
+                return response()->json(['status' => "Product does not exist"]);
             }
         }
         else{
-            return response()->json(['status' => "Login untuk melanjutkan!"]);
+            return response()->json(['status' => "Login to continue!"]);
         }
     }
 
@@ -48,7 +51,7 @@ class WishlistController extends Controller
         {
           $wish = Wishlist::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
           $wish->delete();
-          return response()->json(['status' => "Favorit dihapus!"]);
+          return response()->json(['status' => "Favorite deleted!"]);
         }
       }
       else{

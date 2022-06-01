@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('address1');
             $table->string('address2');
             $table->string('provinsi');
+            $table->string('kota');
             $table->string('kecamatan');
             $table->string('kelurahan');
             $table->string('kode_pos');

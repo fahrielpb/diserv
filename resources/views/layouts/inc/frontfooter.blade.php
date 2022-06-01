@@ -9,14 +9,14 @@
 							<li> <i class="icon fa fa-map-marker"> </i>Jl. Menara Air 1 No.26, Sekeloa, Kecamatan Coblong, Kota Bandung, Jawa Barat 40113 </li>
 							{{-- <li> <i class="icon fa fa-envelope"> </i> info@example.com</li> --}}
 							<li> <i class="icon fa fa-phone"> </i> +62 813-5544-3666</li>
-							<li> <i class="icon fa fa-clock"> </i>Mon-Sat 10:00pm - 7:00pm</li>
+							<li> <i class="icon fa fa-clock"> </i>Mon-Sat 10:00 PM - 7:00 PM</li>
 						</ul>
 					</article>
 				</aside>
 				<aside class="col-md col-6">
 					<h5 class="title">Information</h5>
 					<ul class="list-unstyled">
-						<li> <a href="#">How to Buy</a></li>
+						{{-- <li> <a href="#">How to Buy</a></li> --}}
 						<li> <a href="#">Terms & Conditions</a></li>
 						<li> <a href="#">Shipping Cost</a></li>
 					</ul>

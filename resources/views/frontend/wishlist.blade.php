@@ -56,7 +56,7 @@ Wishlist
 
                         <div class="row">
                             <div class="col-md-4">
-                              <p class="b">Tidak ada Wishlist</p>
+                              <p class="b">No wishlist</p>
                             </div> <!-- col.// -->
                         </div> <!-- row .//  -->
 

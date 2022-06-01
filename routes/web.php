@@ -20,6 +20,7 @@ Route::get('/',[FrontendController::class, 'index']);
 Route::get('category',[FrontendController::class, 'category']);
 Route::get('view-category/{slug}', [FrontendController::class, 'viewcategory']);
 Route::get('category/{cate_slug}/{prod_slug}', [FrontendController::class, 'productview']);
+Route::get('all-product', [FrontendController::class, 'allproductview']);
 
 Auth::routes();
 
@@ -40,12 +41,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('cart', [CartController::class, 'viewcart']);
     Route::get('checkout', [CheckoutController::class, 'index']);
     Route::post('place-order', [CheckoutController::class, 'placeorder']);
-
+    
     Route::get('my-orders', [UserController::class, 'index']);
     Route::get('view-order/{id}', [UserController::class, 'view']);
 
     Route::get('wishlist', [WishlistController::class, 'index']);
-
+    Route::post('proceed-to-pay', [CheckoutController::class, 'paycheck']);
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
