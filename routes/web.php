@@ -21,6 +21,9 @@ Route::get('category',[FrontendController::class, 'category']);
 Route::get('view-category/{slug}', [FrontendController::class, 'viewcategory']);
 Route::get('category/{cate_slug}/{prod_slug}', [FrontendController::class, 'productview']);
 Route::get('all-product', [FrontendController::class, 'allproductview']);
+Route::get('term-condition', [FrontendController::class, 'tncview']);
+Route::get('shipping-cost', [FrontendController::class, 'shippingcost']);
+
 
 Auth::routes();
 

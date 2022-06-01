@@ -17,8 +17,8 @@
 					<h5 class="title">Information</h5>
 					<ul class="list-unstyled">
 						{{-- <li> <a href="#">How to Buy</a></li> --}}
-						<li> <a href="#">Terms & Conditions</a></li>
-						<li> <a href="#">Shipping Cost</a></li>
+						<li> <a href="{{ url('term-condition') }}">Terms & Conditions</a></li>
+						<li> <a href="{{ url('shipping-cost') }}">Shipping Cost</a></li>
 					</ul>
 				</aside>
 				

@@ -72,5 +72,15 @@ class FrontendController extends Controller
                 return view('frontend.viewall', compact('products', 'categories'));
     }
 
-    
+    public function tncview()
+    {
+        $categories = Category::get();
+        return view('frontend.tnc', compact('categories'));
+    }
+
+    public function shippingcost()
+    {
+        $categories = Category::get();
+        return view('frontend.shippingcost', compact('categories'));
+    }
 }
