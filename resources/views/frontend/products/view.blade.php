@@ -25,12 +25,12 @@
 	<div class="img-big-wrap">
 	   <a href="#"><img src="{{ asset('assets/uploads/products/'.$products->image) }}"></a>
 	</div> <!-- img-big-wrap.// -->
-	<div class="thumbs-wrap">
+	{{-- <div class="thumbs-wrap">
 	  <a href="#" class="item-thumb"> <img src="../images/items/1.jpg"></a>
 	  <a href="#" class="item-thumb"> <img src="../images/items/2.jpg"></a>
 	  <a href="#" class="item-thumb"> <img src="../images/items/3.jpg"></a>
 	  <a href="#" class="item-thumb"> <img src="../images/items/4.jpg"></a>
-	</div> <!-- thumbs-wrap.// -->
+	</div> <!-- thumbs-wrap.// --> --}}
 </article> <!-- gallery-wrap .end// -->
 		</aside>
 		<main class="col-sm-6">
@@ -44,12 +44,8 @@
 
 	<p> {!! $products->description !!}</p>
 	<ul class="list-normal cols-two">
-		<li>Not just for commute </li>
-		<li>Branded tongue and cuff </li>
-		<li>Super fast and amazing </li>
-		<li>Lorem sed do eiusmod tempor </li>
-		<li>Easy fast and ver good </li>
-		<li>Lorem sed do eiusmod tempor  </li>
+		<li>Premium Material </li>
+		<li>Good Design </li>
 	</ul>
 
 <div class="h3 mb-4"> 
@@ -59,19 +55,6 @@
 </div> <!-- price-wrap.// -->
 
 <div class="row">
-  <div class="form-group col-md flex-grow-0">
-    <input type="hidden" value="{{ $products->id }}" class="prod_id">
-    <label>Quantity</label>
-    <div class="input-group mb-3 input-spinner">
-      <div class="input-group-append">
-        <button class="btn btn-light decrement-btn" type="button" id="button-minus"> &minus; </button>
-      </div>
-      <input type="text" class="form-control qty-input" value="1">
-      <div class="input-group-prepend">
-        <button class="btn btn-light increment-btn" type="button" id="button-plus"> + </button>
-      </div> 
-    </div>
-  </div> <!-- col.// -->
   <div class="form-group col-md">
       <label>Select size</label>
       <div class="mt-2">
@@ -98,6 +81,23 @@
       </div>
   </div> <!-- col.// -->
 </div> <!-- row.// -->
+
+<div class="row">
+  <div class="form-group col-md flex-grow-0">
+    <input type="hidden" value="{{ $products->id }}" class="prod_id">
+    <label>Quantity</label>
+    <div class="input-group mb-3 input-spinner">
+      <div class="input-group-append">
+        <button class="btn btn-light decrement-btn" type="button" id="button-minus"> &minus; </button>
+      </div>
+      <input type="text" class="form-control qty-input" value="1">
+      <div class="input-group-prepend">
+        <button class="btn btn-light increment-btn" type="button" id="button-plus"> + </button>
+      </div> 
+    </div>
+    </div>
+  </div> <!-- col.// -->
+
 
 
 <div class="form-row">

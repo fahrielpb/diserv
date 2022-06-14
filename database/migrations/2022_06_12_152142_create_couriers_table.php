@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('couriers', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('code');
             $table->string('title');
             $table->timestamps();

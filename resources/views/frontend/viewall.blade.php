@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @include('layouts.inc.slider')
+    {{-- @include('layouts.inc.slider') --}}
    
     <section class="section-name  padding-y-sm">
       <div class="container">

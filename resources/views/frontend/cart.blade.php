@@ -18,7 +18,7 @@ My Cart
     </div> <!-- container //  -->
 
     <section class="section-content padding-y bg">
-        <div class="container">
+        <div class="container cartitems">
             @php
                 $total = 0;
             @endphp

@@ -8,13 +8,10 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Frontend\OngkirController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\WishlistController;
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/',[FrontendController::class, 'index']);
 Route::get('category',[FrontendController::class, 'category']);
@@ -22,9 +19,11 @@ Route::get('view-category/{slug}', [FrontendController::class, 'viewcategory']);
 Route::get('category/{cate_slug}/{prod_slug}', [FrontendController::class, 'productview']);
 Route::get('all-product', [FrontendController::class, 'allproductview']);
 Route::get('term-condition', [FrontendController::class, 'tncview']);
-Route::get('shipping-cost', [FrontendController::class, 'shippingcost']);
 
+Route::get('shipping-cost', [OngkirController::class, 'index']);
 
+Route::get('product-list', [FrontendController::class, 'productlistAjax']);
+Route::post('searchproduct', [FrontendController::class, 'searchProduct']);
 Auth::routes();
 
 Route::get('load-cart-data',[CartController::class, 'cartcount']);

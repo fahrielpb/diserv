@@ -6,6 +6,7 @@ use App\Models\City;
 use App\Models\Province;
 use Illuminate\Database\Seeder;
 use Kavist\RajaOngkir\Facades\RajaOngkir;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class LocationsTableSeeder extends Seeder
 {
@@ -24,7 +25,6 @@ class LocationsTableSeeder extends Seeder
             ]);
 
             $daftarKota = RajaOngkir::kota()->dariProvinsi($provinceRow['province_id'])->get();
-
             foreach ($daftarKota as $cityRow) {
                 City::create([
                     'province_id' => $provinceRow['province_id'],
@@ -32,7 +32,7 @@ class LocationsTableSeeder extends Seeder
                     'title' => $cityRow['city_name']
                 ]);
             }
+            
         }
-        
     }
 }

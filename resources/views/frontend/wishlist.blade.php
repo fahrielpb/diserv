@@ -18,7 +18,7 @@ Wishlist
     </div> <!-- container //  -->
 
     <section class="section-content padding-y bg">
-        <div class="container">
+        <div class="container wishlistitems">
           
             @if($wishlist->count() > 0)
                 {{-- wishlist card --}}

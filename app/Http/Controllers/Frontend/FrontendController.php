@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 use function PHPUnit\Framework\returnSelf;
 
 class FrontendController extends Controller
@@ -17,10 +18,7 @@ class FrontendController extends Controller
         $categories = Category::get();
         // $featured_products = Product::with('category')->where('trending','1')->take(8)->get();
         $featured_products = Product::with('category')->latest()->take(12)->get();
-        // dd($featured_products);
         return view('frontend.index', compact('featured_products', 'category', 'categories'));
-
-
     }
 
     public function category()
@@ -78,9 +76,31 @@ class FrontendController extends Controller
         return view('frontend.tnc', compact('categories'));
     }
 
-    public function shippingcost()
+    public function productlistAjax()
     {
-        $categories = Category::get();
-        return view('frontend.shippingcost', compact('categories'));
+        $products = Product::select('name')->where('status', '0')->get();
+        $data = [];
+
+        foreach ($products as $item) {
+            $data[] = $item['name'];
+        }
+        return $data;
+    }
+
+    public function searchproduct(Request $request)
+    {
+        $searched_product = $request->product_name;
+        
+        if($searched_product != "") {
+            $product = Product::where("name", "LIKE", "%$searched_product%")->first();
+            if($product) {
+                return redirect('category/'.$product->category->slug.'/'.$product->slug);
+            }
+            else{
+                return redirect()->back()->with("status", "No products matched your search!");
+            }
+        } else{
+            return redirect()->back();
+        }
     }
 }

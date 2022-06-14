@@ -25,10 +25,10 @@
 				<aside class="col-md-4 col-12">
 					<h5 class="title">Follow us on social media</h5>  
 					<div>
-						<a href="#" class="btn btn-icon btn-light"><i class="fab fa-facebook-f"></i></a>
-						<a href="#" class="btn btn-icon btn-light"><i class="fab fa-twitter"></i></a>
-						<a href="https://www.instagram.com/diservcatalog/" class="btn btn-icon btn-light"><i class="fab fa-instagram"></i></a>
-						<a href="#" class="btn btn-icon btn-light"><i class="fab fa-youtube"></i></a>
+						<a target="_blank" href="https://facebook.com/" class="btn btn-icon btn-light"><i class="fab fa-facebook-f"></i></a>
+						<a target="_blank" href="https://twitter.com/?lang=en" class="btn btn-icon btn-light"><i class="fab fa-twitter"></i></a>
+						<a target="_blank" href="https://www.instagram.com/diservcatalog/" class="btn btn-icon btn-light"><i class="fab fa-instagram"></i></a>
+						<a target="_blank" href="https://youtube.com/" class="btn btn-icon btn-light"><i class="fab fa-youtube"></i></a>
 					</div>
 
 				</aside>

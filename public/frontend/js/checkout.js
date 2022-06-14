@@ -138,7 +138,6 @@ $(document).ready(function () {
                 data: data,
                 success: function (response) {
                     alert(response.total_price)
-
                 }
             });
         }

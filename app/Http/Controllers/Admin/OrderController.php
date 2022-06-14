@@ -33,4 +33,6 @@ class OrderController extends Controller
         $orders = Order::where('status', '1')->get();
         return view('admin.orders.history', compact('orders'));
     }
+
+
 }

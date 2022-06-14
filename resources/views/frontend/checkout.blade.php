@@ -48,20 +48,20 @@ Checkout Products
                                     <label>Address 2</label>
                                     <input type="text" name="address2" value="{{ Auth::user()->address2 }}" placeholder="Address 2" class="form-control address2">
                                     <span id="address2_error" class="text-danger"></span>
-
                                 </div>
-                                <div class="form-group col-sm-6">
-                                    <label>City</label>
-                                    <input type="text" name="kota" value="{{ Auth::user()->kota }}" placeholder="City" class="form-control kota">
-                                    <span id="kota_error" class="text-danger"></span>
 
-                                </div>
                                 <div class="form-group col-sm-6">
                                     <label>Province</label>
                                     <input type="text" name="provinsi" value="{{ Auth::user()->provinsi }}" placeholder="Province" class="form-control provinsi">
                                     <span id="provinsi_error" class="text-danger"></span>
-
                                 </div>
+
+                                <div class="form-group col-sm-6">
+                                    <label>City</label>
+                                    <input type="text" name="kota" value="{{ Auth::user()->kota }}" placeholder="City" class="form-control kota">
+                                    <span id="kota_error" class="text-danger"></span>
+                                </div>
+
                                 <div class="form-group col-sm-6">
                                     <label>Subdistrict</label>
                                     <input type="text" name="kecamatan" value="{{ Auth::user()->kecamatan }}" placeholder="Subdistrict" class="form-control kecamatan">
@@ -87,12 +87,11 @@ Checkout Products
                 <article class="card mb-4">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Shipping Service</h4>
+
                     </div> <!-- card-body.// -->
                 </article> <!-- card.// -->
 
             </main> <!-- col.// -->
-
-
 
             <aside class="col-md-4">
                 <div class="card shadow">
