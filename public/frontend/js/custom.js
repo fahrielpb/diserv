@@ -74,7 +74,8 @@ $(document).ready(function () {
             url: "/add-to-cart",
             data: {
                 'product_id': product_id,
-                'product_qty': '1',
+                // 'product_qty': '1',
+                'product_qty': product_qty,
             },
             success: function (response) {
                 swal(response.status);

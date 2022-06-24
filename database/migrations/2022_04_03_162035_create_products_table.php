@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('cate_id');
+            $table->foreignId('cate_id')->constrained('categories')->cascadeOnDelete();
             $table->string('name');
             $table->string('slug');
             $table->mediumText('small_description');
@@ -31,6 +31,10 @@ return new class extends Migration
             $table->mediumText('meta_keywords');
             $table->mediumText('meta_description');
             $table->timestamps();
+            
+            // relasi antar table
+            // $table->foreign('cate_id')->references('id')->on('categories')->cascadeOnDelete();
+
         });
     }
 

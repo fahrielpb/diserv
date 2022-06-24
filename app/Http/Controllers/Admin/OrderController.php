@@ -34,5 +34,4 @@ class OrderController extends Controller
         return view('admin.orders.history', compact('orders'));
     }
 
-
 }

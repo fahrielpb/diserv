@@ -23,8 +23,9 @@
                     </span>
                 @enderror
             </div> <!-- form-group end.// -->
-           
+
             <div class="form-group col-md-6">
+            {{-- <div class="form-group"> --}}
                 <label>{{ __('Last Name') }}</label>
                 <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname"
                     value="{{ old('lname') }}" required autocomplete="lname" autofocus>
@@ -35,6 +36,8 @@
                     </span>
                 @enderror
             </div> <!-- form-group end.// -->
+           
+            
         </div>
 
             <div class="form-group">

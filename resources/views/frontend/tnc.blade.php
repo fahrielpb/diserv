@@ -1,11 +1,10 @@
 @extends('layouts.front')
 
 @section('title')
-    Diserv
+Term & Conditions
 @endsection
 
 @section('content')
-    {{-- @include('layouts.inc.slider') --}}
    
     <section class="section-name  padding-y-sm">
       <div class="container">

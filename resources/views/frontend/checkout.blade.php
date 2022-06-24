@@ -17,66 +17,122 @@ Checkout Products
                             <div class="row checkout-form">
                                 <div class="form-group col-sm-6">
                                     <label for="">First Name</label>
-                                    <input type="text" name="fname" value="{{ Auth::user()->name }}" placeholder="First Name" class="form-control fname">
+                                    <input type="text" name="fname" value="{{ Auth::user()->name }}" placeholder="First Name" class="form-control fname" required>
                                     <span id="fname_error" class="text-danger"></span>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label>Last Name</label>
-                                    <input type="text" name="lname" value="{{ Auth::user()->lname }}" placeholder="Last Name" class="form-control lname">
+                                    <input type="text" name="lname" value="{{ Auth::user()->lname }}" placeholder="Last Name" class="form-control lname" required>
                                     <span id="lname_error" class="text-danger"></span>
 
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label>Email</label>
-                                    <input type="email" name="email" value="{{ Auth::user()->email }}" placeholder="example@gmail.com" class="form-control email">
+                                    <input type="email" name="email" value="{{ Auth::user()->email }}" placeholder="example@gmail.com" class="form-control email" required>
                                     <span id="email_error" class="text-danger"></span>
 
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label>Phone</label>
-                                    <input type="text" name="phone" value="{{ Auth::user()->phone }}" value="+62" class="form-control phone">
+                                    @if ($order)
+                                    <input type="text" name="phone" value="{{ $order->phone }}" class="form-control phone" required>
+                                    @else
+                                    <input type="text" name="phone" placeholder="+62" class="form-control phone" required>
+                                    @endif
                                     <span id="phone_error" class="text-danger"></span>
 
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label>Address 1</label>
-                                    <input type="text" name="address1" value="{{ Auth::user()->address1 }}" placeholder="Address 1" class="form-control address1">
+                                    @if ($order)
+                                    <input type="text" name="address1" value="{{ $order->address1 }}" class="form-control address1" required>
+                                    @else
+                                    <input type="text" name="address1" placeholder="Address 1" class="form-control address1" required>
+                                    @endif
+
+                                    {{-- <input type="text" name="address1" value="{{ Auth::user()->address1 }}" placeholder="Address 1" class="form-control address1" required> --}}
                                     <span id="address1_error" class="text-danger"></span>
 
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label>Address 2</label>
-                                    <input type="text" name="address2" value="{{ Auth::user()->address2 }}" placeholder="Address 2" class="form-control address2">
+                                    @if ($order)
+                                    <input type="text" name="address2" value="{{ $order->address2 }}" class="form-control address2" required>
+                                    @else
+                                    <input type="text" name="address2" placeholder="Address 2" class="form-control address2" required>
+                                    @endif
+                                    
+                                    {{-- <input type="text" name="address2" value="{{ Auth::user()->address2 }}" placeholder="Address 2" class="form-control address2" required> --}}
                                     <span id="address2_error" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group col-sm-6">
                                     <label>Province</label>
-                                    <input type="text" name="provinsi" value="{{ Auth::user()->provinsi }}" placeholder="Province" class="form-control provinsi">
+                                    @if ($order)
+                                    <input type="text" name="provinsi" value="{{ $order->provinsi }}" class="form-control provinsi" required>
+                                    @else
+                                    <input type="text" name="provinsi" placeholder="Province" class="form-control provinsi" required>
+                                    @endif
+
+                                    {{-- <input type="text" name="provinsi" value="{{ Auth::user()->provinsi }}" placeholder="Province" class="form-control provinsi" required> --}}
                                     <span id="provinsi_error" class="text-danger"></span>
                                 </div>
 
+                                {{-- <div class="form-group col-sm-6">
+                                    <select name="province_destination" id="province" placeholder="Province" class="form-control provinsi">
+                                        <option value="{{ Auth::user()->provinsi }}" holder>Province</option>
+                                        @foreach($provinces as $province)
+                                        <option value="{{$province->id}}">{{$province->province}}</option>
+                                        @endforeach
+                                    </select>
+                                    <span id="provinsi_error" class="text-danger"></span>
+                                </div> --}}
+
                                 <div class="form-group col-sm-6">
                                     <label>City</label>
-                                    <input type="text" name="kota" value="{{ Auth::user()->kota }}" placeholder="City" class="form-control kota">
+                                    @if ($order)
+                                    <input type="text" name="kota" value="{{ $order->kota }}" class="form-control kota" required>
+                                    @else
+                                    <input type="text" name="kota" placeholder="City" class="form-control kota" required>
+                                    @endif
+
+                                    {{-- <input type="text" name="kota" value="{{ Auth::user()->kota }}" placeholder="City" class="form-control kota" required> --}}
                                     <span id="kota_error" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group col-sm-6">
                                     <label>Subdistrict</label>
-                                    <input type="text" name="kecamatan" value="{{ Auth::user()->kecamatan }}" placeholder="Subdistrict" class="form-control kecamatan">
+                                    @if ($order)
+                                    <input type="text" name="kecamatan" value="{{ $order->kecamatan }}" class="form-control kecamatan" required>
+                                    @else
+                                    <input type="text" name="kecamatan" placeholder="Subdistrict" class="form-control kecamatan" required>
+                                    @endif
+
+                                    {{-- <input type="text" name="kecamatan" value="{{ Auth::user()->kecamatan }}" placeholder="Subdistrict" class="form-control kecamatan" required> --}}
                                     <span id="kecamatan_error" class="text-danger"></span>
 
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label>Ward/Village</label>
-                                    <input type="text" name="kelurahan" value="{{ Auth::user()->kelurahan }}" placeholder="Ward/Village" class="form-control kelurahan">
+                                    @if ($order)
+                                    <input type="text" name="kelurahan" value="{{ $order->kelurahan }}" class="form-control kelurahan" required>
+                                    @else
+                                    <input type="text" name="kelurahan" placeholder="Ward/Village" class="form-control kelurahan" required>
+                                    @endif
+
+                                    {{-- <input type="text" name="kelurahan" value="{{ Auth::user()->kelurahan }}" placeholder="Ward/Village" class="form-control kelurahan" required> --}}
                                     <span id="kelurahan_error" class="text-danger"></span>
 
                                 </div>
                                 <div class="form-group col-sm-6"> 
                                     <label>Postal Code</label>
-                                    <input type="text" name="kode_pos" value="{{ Auth::user()->kode_pos }}" placeholder="Postal Code" class="form-control kode_pos">
+                                    @if ($order)
+                                    <input type="text" name="kode_pos" value="{{ $order->kode_pos }}" class="form-control kode_pos" required>
+                                    @else
+                                    <input type="text" name="kode_pos" placeholder="Postal Code" class="form-control kode_pos" required>
+                                    @endif
+
+                                    {{-- <input type="text" name="kode_pos" value="{{ Auth::user()->kode_pos }}" placeholder="Postal Code" class="form-control kode_pos" required> --}}
                                     <span id="kode_pos_error" class="text-danger"></span>
 
                                 </div>
@@ -116,6 +172,8 @@ Checkout Products
                                 </div> <!-- card-body.// -->
                                 @php
                                     $total += $item->products->selling_price * $item->prod_qty ;
+                                    // dd($total);
+
                                 @endphp
                             @endforeach
                         </div> <!-- row.// -->
@@ -131,9 +189,12 @@ Checkout Products
                                 <dd class="h5">@currency($total)</dd>
                             </dl>
                             <hr>
+                            <p class="payment-instructions text-muted">
+                                You will be redirected to another page to complete the payment.
+                            </p>
                             @if($total>1)
-                            <button type="submit" class="btn btn-primary btn-block">Cash On Delivery</button>
-                            <button type="button" class="btn btn-primary btn-block pay-btn">Pay Now</button>
+                            <button type="submit" class="btn btn-primary btn-block">Checkout</button>
+                            {{-- <button type="button" class="btn btn-primary btn-block pay-btn">Pay Now</button> --}}
 
                             @else
                             <a href="#" class="btn btn-primary btn-block disabled" role="button">Cart Empty</a>
@@ -148,14 +209,6 @@ Checkout Products
       </form>
     </div> <!-- container .//  -->
 </section>
-@endsection
-
-@section ('scripts')
-<!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
-<script type="text/javascript"
-src="https://app.sandbox.midtrans.com/snap/snap.js"
-data-client-key="Mid-client-Ltl8EVn8FA50esva"></script>
-<!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
 @endsection
 
 

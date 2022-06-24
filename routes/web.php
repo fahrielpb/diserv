@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\OngkirController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\Frontend\MidtransController;
 
 Route::get('/',[FrontendController::class, 'index']);
 Route::get('category',[FrontendController::class, 'category']);
@@ -38,6 +39,12 @@ Route::post('update-cart', [CartController::class, 'updatecart']);
 
 Route::post('add-to-wishlist', [WishlistController::class, 'add']);
 Route::post('delete-wishlist-item', [WishlistController::class, 'deleteitem']);
+
+// midtrans
+Route::post('midtrans-callback', [MidtransController::class, 'notificationHandler']);
+Route::get('midtrans-finish', [MidtransController::class, 'finishRedirect']);
+Route::get('midtrans-unfinish', [MidtransController::class, 'unfinishRedirect']);
+Route::get('midtrans-error', [MidtransController::class, 'errorRedirect']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('cart', [CartController::class, 'viewcart']);

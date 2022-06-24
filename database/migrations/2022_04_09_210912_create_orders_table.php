@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            // $table->string('user_id');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('fname');
             $table->string('lname');
             $table->string('email');
@@ -29,6 +30,7 @@ return new class extends Migration
             $table->string('kode_pos');
             $table->string('total_price');
             $table->tinyInteger('status')->default('0');
+            $table->string('payment_status')->nullable();
             $table->string('message')->nullable();
             $table->string('tracking_no');
             $table->timestamps();

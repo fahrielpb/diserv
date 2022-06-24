@@ -26,6 +26,7 @@ class Order extends Model
         'kode_pos',
         'total_price',
         'status',
+        'payment_status',
         'message',
         'tracking_no',
     ];

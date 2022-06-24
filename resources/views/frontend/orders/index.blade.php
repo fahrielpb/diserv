@@ -11,8 +11,8 @@ My Orders
             <aside class="col-md-3">
                 <!--   SIDEBAR   -->
                 <ul class="list-group">
-                    <a class="list-group-item active" href="#"> My order history </a>
-                    <a class="list-group-item" href="#"> Wishlist </a>
+                    <a class="list-group-item active" href="{{ url('my-orders') }}"> My order history </a>
+                    <a class="list-group-item" href="{{ url('wishlist') }}"> Wishlist </a>
                 </ul>
                 <br>
                 <a class="btn btn-light btn-block" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa fa-power-off"></i> <span class="text">{{ __('Logout') }}</span> </a>

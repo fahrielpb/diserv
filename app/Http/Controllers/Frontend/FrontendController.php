@@ -17,6 +17,8 @@ class FrontendController extends Controller
         $category = Category::get();
         $categories = Category::get();
         // $featured_products = Product::with('category')->where('trending','1')->take(8)->get();
+
+        // menampilkan produk 12 terbaru
         $featured_products = Product::with('category')->latest()->take(12)->get();
         return view('frontend.index', compact('featured_products', 'category', 'categories'));
     }

@@ -9,7 +9,7 @@ My Orders
     <div class="container">
         <div class="row">
             {{-- detail side --}}
-            <main class="col-md-12">
+            <main class="col-md-8">
                 <article class="card">
                     <header class="card-header">
                         <strong class="d-inline-block mr-3">Order Date :
@@ -37,13 +37,13 @@ My Orders
                             </div>
                             <div class="col-md-4">
                                 <h6 class="text-muted">Payment</h6>
-                                <span class="text-success">
+                                {{-- <span class="text-success">
                                     <i class="fab fa-lg fa-cc-visa"></i>
                                     Visa **** 4216
-                                </span>
-                                <p>Subtotal: <br>
-                                    Shipping fee: <br>
-                                    <span class="b">Total: @currency($orders->total_price)</span>
+                                </span> --}}
+                                {{-- <p>Subtotal: <br> --}}
+                                    Shipping fee : <br>
+                                    <span class="b">Total : @currency($orders->total_price)</span>
                                 </p>
                             </div>
                         </div> <!-- row.// -->
@@ -61,8 +61,9 @@ My Orders
                                         <var class="price text-muted">@currency($item->price)</var>
                                     </td>
                                     <td> x {{ $item->qty }} </td>
-                                    <td> <a href="#" class="btn btn-outline-primary">Track order</a> <a href="#"
-                                            class="btn btn-light"> Details </a> </td>
+                                    <td>
+                                        {{-- <a href="#" class="btn btn-outline-primary">Track order</a> --}}
+                                        {{-- <a href="{{ url('category/{cate_slug}/{prod_slug}') }}" class="btn btn-light"> Details </a> </td> --}}
                                 </tr>
                             @endforeach
                         </table>

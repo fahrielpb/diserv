@@ -23,4 +23,5 @@ class UserController extends Controller
         $categories = Category::get();
         return view('frontend.orders.view', compact('orders','categories'));
     }
+
 }
