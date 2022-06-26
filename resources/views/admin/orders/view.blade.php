@@ -76,8 +76,9 @@ Order Detail
                             <select class="form-select" name="order_status"
                                 class="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton"
                                 data-bs-toggle="dropdown" aria-expanded="false"">
-                                <option {{ $orders->status == '0'? 'selected':'' }} value="0" class="dropdown-item">Pending</option>
-                                <option {{ $orders->status == '1'? 'selected':'' }} value="1" class="dropdown-item">Completed</option>
+                                <option {{ $orders->status == '0'? 'selected':'' }} value="0" class="dropdown-item">Packed</option>
+                                <option {{ $orders->status == '1'? 'selected':'' }} value="1" class="dropdown-item">Sent</option>
+                                <option {{ $orders->status == '2'? 'selected':'' }} value="2" class="dropdown-item">Completed</option>
                             </select>
                             <button type="submit" class="btn btn-outline-primary mt-3">Update</button>
                           </form>

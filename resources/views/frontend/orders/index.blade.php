@@ -43,7 +43,13 @@ My Orders
                                         </td>
                                         <td>{{ $item->tracking_no }}</td>
                                         <td>@currency($item->total_price )</td>
-                                        <td>{{ $item->status == '0' ?'Pending' : 'Completed' }}
+                                        {{-- <td>{{ $item->status == '0' ?'Packed' : 'Completed'}}
+                                        </td> --}}
+                                        <td>
+                                            @if ($item->status == '0') Packed
+                                            @elseif ($item->status == '1') Sent
+                                            @else Completed
+                                            @endif
                                         </td>
                                         <td>
                                             <a href="{{ url('view-order/'.$item->id) }}"
