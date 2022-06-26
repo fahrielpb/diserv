@@ -15,7 +15,8 @@
     <link href="{{ asset('frontend/images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
 
     <!-- jQuery -->
-    <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}" type="text/javascript"></script>
+    {{-- <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}" type="text/javascript"></script> --}}
+    <script src="{{ asset('frontend/js/jquery-3.6.0.js') }}" type="text/javascript"></script>
 
     <!-- Bootstrap4 files-->
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet" type="text/css" />

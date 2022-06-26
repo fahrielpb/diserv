@@ -22,6 +22,8 @@ Route::get('all-product', [FrontendController::class, 'allproductview']);
 Route::get('term-condition', [FrontendController::class, 'tncview']);
 
 Route::get('shipping-cost', [OngkirController::class, 'index']);
+// Route::get('shipping-cost', [OngkirController::class, 'test']);
+Route::get('getCity/ajax/{id}', [OngkirController::class, 'ajax']);
 
 Route::get('product-list', [FrontendController::class, 'productlistAjax']);
 Route::post('searchproduct', [FrontendController::class, 'searchProduct']);
