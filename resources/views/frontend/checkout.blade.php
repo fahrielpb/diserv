@@ -49,7 +49,6 @@ Checkout Products
                                     @else
                                     <input type="text" name="address1" placeholder="Address 1" class="form-control address1" required>
                                     @endif
-
                                     {{-- <input type="text" name="address1" value="{{ Auth::user()->address1 }}" placeholder="Address 1" class="form-control address1" required> --}}
                                     <span id="address1_error" class="text-danger"></span>
 
@@ -73,7 +72,6 @@ Checkout Products
                                     @else
                                     <input type="text" name="provinsi" placeholder="Province" class="form-control provinsi" required>
                                     @endif
-
                                     {{-- <input type="text" name="provinsi" value="{{ Auth::user()->provinsi }}" placeholder="Province" class="form-control provinsi" required> --}}
                                     <span id="provinsi_error" class="text-danger"></span>
                                 </div>
