@@ -65,37 +65,51 @@ Checkout Products
                                     <span id="address2_error" class="text-danger"></span>
                                 </div>
 
-                                <div class="form-group col-sm-6">
-                                    <label>Province</label>
-                                    @if ($order)
-                                    <input type="text" name="provinsi" value="{{ $order->provinsi }}" class="form-control provinsi" required>
-                                    @else
-                                    <input type="text" name="provinsi" placeholder="Province" class="form-control provinsi" required>
-                                    @endif
-                                    {{-- <input type="text" name="provinsi" value="{{ Auth::user()->provinsi }}" placeholder="Province" class="form-control provinsi" required> --}}
-                                    <span id="provinsi_error" class="text-danger"></span>
-                                </div>
-
-                                {{-- <div class="form-group col-sm-6">
-                                    <select name="province_destination" id="province" placeholder="Province" class="form-control provinsi">
-                                        <option value="{{ Auth::user()->provinsi }}" holder>Province</option>
-                                        @foreach($provinces as $province)
-                                        <option value="{{$province->id}}">{{$province->province}}</option>
+                                 <div class="form-group col-sm-6">
+                                    <select name="province_destination" id="province" required placeholder="Province" class="form-control provinsi">
+                                    <option value=""> Pilih Provinsi</option>    
+                                        @foreach($prov as $row)
+                                        <option value="{{$row['province_id']}}">{{$row['province']}}</option>
                                         @endforeach
                                     </select>
                                     <span id="provinsi_error" class="text-danger"></span>
-                                </div> --}}
+                                </div> 
 
-                                <div class="form-group col-sm-6">
-                                    <label>City</label>
-                                    @if ($order)
-                                    <input type="text" name="kota" value="{{ $order->kota }}" class="form-control kota" required>
-                                    @else
-                                    <input type="text" name="kota" placeholder="City" class="form-control kota" required>
-                                    @endif
+                                <div class="form-group col-sm-6">                                    
+                                    <select class="form-control" id="kota" disabled required>
+                                        <option value=""> Pilih Kota</option>            
+                                    </select>           
+                                </div>
 
-                                    {{-- <input type="text" name="kota" value="{{ Auth::user()->kota }}" placeholder="City" class="form-control kota" required> --}}
-                                    <span id="kota_error" class="text-danger"></span>
+                                <div class="form-group col-sm-6 d-none">
+                                    <div class="input-group">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Berat</span>
+                                            </div>
+                                            <input type="number" value="1" min="1" class="form-control" id="berat" name="berat"> 
+                                            <div class="input-group-append">
+                                            <span class="input-group-text">Kg</span>
+                                            </div>
+                                    </div>
+                                </div> 
+
+                                <div class="form-group col-sm-6">                                    
+                                <select class="form-control" id="kurir" disabled>
+                                    <option value=""> Pilih Kurir</option>
+                                    <option value="jne">JNE</option>
+                                    <option value="tiki">TIKI</option>
+                                    <option value="pos">POS Indonesia</option>
+                                </select> 
+                                </div>
+
+                                <div class="form-group col-sm-12">
+                                <select class="form-control" id="layanan" disabled>
+                                    <option value=""> Pilih Layanan</option>                    
+                                </select> 
+                                </div>
+
+                                <div class="form-group col-sm-12">
+                                    <div id="hasil"></div>
                                 </div>
 
                                 <div class="form-group col-sm-6">
@@ -180,11 +194,11 @@ Checkout Products
                             <hr>
                             <dl class="dlist-align">
                                 <dt>Shipping Cost :</dt>
-                                {{-- <dd class="h6">@currency($total)</dd> --}}
+                                <dd class="h6" id="shipping"></dd>
                             </dl>
                             <dl class="dlist-align">
                                 <dt>Total :</dt>
-                                <dd class="h5">@currency($total)</dd>
+                                <dd class="h5" id="total">@currency($total)</dd>
                             </dl>
                             <hr>
                             <p class="payment-instructions text-muted">
@@ -207,6 +221,135 @@ Checkout Products
       </form>
     </div> <!-- container .//  -->
 </section>
+
+@push('ongkir')
+<script>
+$("#province").on("change", function(e){
+    e.preventDefault();
+    var option = $('option:selected', this).val();    
+    $('#kota option:gt(0)').remove();
+    $('#layanan option:gt(0)').remove();
+    $('#kurir').val('');
+
+    if(option==='')
+    {
+        alert('null');    
+        $("#kota").prop("disabled", true);
+        $("#kurir").prop("disabled", true);
+    }
+    else
+    {        
+        $("#kota").prop("disabled", false);
+        getKota1(option);
+}
+});
+
+$("#kurir").on("change", function(e){
+    e.preventDefault();    
+    var option = $('option:selected', this).val();        
+    var des = $("#kota").val();
+    var qty = $("#berat").val();
+
+    if(qty==='0' || qty==='')
+    {
+        alert('null');
+    }
+    else if(option==='')
+    {
+        alert('null');        
+    }
+    else
+    {                
+        getOrigin(des,qty,option);
+    }
+});
+
+$("#kota").on("change", function(e){
+  e.preventDefault();
+  var option = $('option:selected', this).val();    
+  $('#layanan option:gt(0)').remove();
+  $('#kurir').val('');
+
+  if(option==='')
+  {
+    alert('null');    
+    $("#kurir").prop("disabled", true);
+  }
+  else
+  {        
+    $("#kurir").prop("disabled", false);    
+  }
+});
+
+function getKota1(idpro) {
+  var $op = $("#kota"); 
+  
+  $.getJSON("city/"+idpro, function(data){      
+    $.each(data, function(i,field){  
+    
+
+       $op.append('<option value="'+field.city_id+'">'+field.type+' '+field.city_name+'</option>'); 
+
+    });
+    
+  });
+ 
+}
+
+
+function getOrigin(des,qty,cour) {
+  var $op = $("#layanan"); 
+  $op.prop("disabled", false);  
+  $('#layanan option:gt(0)').remove();
+  var i, j, x = "";
+      
+    var url = "{{ route('tarif', ['des'=>':id', 'wg'=>':wg', 'cour'=>':cour']) }}";
+    url = url.replace(':id', des);
+    url = url.replace(':wg', qty);
+    url = url.replace(':cour', cour);  
+
+  $.getJSON(url, function(data){     
+    $.each(data, function(i,field){  
+
+      for(i in field.costs)
+      {
+           for (j in field.costs[i].cost) {                
+                x += '<option value="'+field.costs[i].cost[j].value+'">'+field.costs[i].service+' '+rp(field.costs[i].cost[j].value)+'</option>';
+            }
+         
+      }
+
+      $op.append(x);
+
+    });
+  });
+ 
+}
+
+
+function rp(n)
+{
+  const format = n.toString().split('').reverse().join('');
+  const convert = format.match(/\d{1,3}/g);
+  return 'Rp ' + convert.join('.').split('').reverse().join('');
+}
+
+
+$("#layanan").on("change", function(e){
+  e.preventDefault();
+  var val = $(this).val();
+  var total = {{$total}};
+  var n = parseInt(val)+parseInt(total);  
+  
+const format = n.toString().split('').reverse().join('');
+const convert = format.match(/\d{1,3}/g);
+const r = 'Rp ' + convert.join('.').split('').reverse().join('');
+$('#total').html(r);
+$('#shipping').html(rp(parseInt(val)));
+});
+</script>
+@endpush()
+
 @endsection
 
 
