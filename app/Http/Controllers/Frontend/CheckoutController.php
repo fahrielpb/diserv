@@ -18,6 +18,8 @@ use App\Models\Province;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Http;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -27,6 +29,7 @@ class CheckoutController extends Controller
 {
     public function index()
     {
+        $prov = $this->prov();        
         $old_cartitems = Cart::where('user_id', Auth::id())->get();
         foreach($old_cartitems as $item)
         {
@@ -41,7 +44,59 @@ class CheckoutController extends Controller
         $categories = Category::get();
         $order = Order::where('user_id',Auth::id())->first();
         // dd($order);
-        return view('frontend.checkout', compact('cartitems', 'categories', 'order')); 
+        return view('frontend.checkout', compact('cartitems', 'categories', 'order','prov')); 
+
+
+
+    }
+
+
+    private function prov()
+    {
+        $response = Http::withHeaders(
+            [
+                'key' => '83624db318a1398f617240e141350d5b'
+            ]
+        )->get('https://api.rajaongkir.com/starter/province');
+        return  $response['rajaongkir']['results'];         
+    }
+
+    public function kota($id)
+    {
+        return $this->city($id);
+    }
+
+    private function city($id)
+    {
+        $response = Http::withHeaders(
+            [
+                'key' => '83624db318a1398f617240e141350d5b'
+            ]
+        )->get('https://api.rajaongkir.com/starter/city',[
+            'province'=>$id,
+        ]);
+        return  $response['rajaongkir']['results'];              
+    }
+
+    public function tarif($des,$weight,$cour)
+    {
+        return $this->cost($des,$weight,$cour);             
+    }
+
+
+    private function cost($des,$weight,$cour)
+    {
+        $response = Http::withHeaders(
+            [
+                'key' => '83624db318a1398f617240e141350d5b'
+            ]
+        )->post('https://api.rajaongkir.com/starter/cost',[
+            'origin'=>23,
+            'destination'=>$des,
+            'weight'=>$weight * 1000,
+            'courier'=>$cour
+        ]);                
+        return  $response['rajaongkir']['results'];      
     }
 
     // public function placeorder(Request $request)

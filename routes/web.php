@@ -51,6 +51,8 @@ Route::get('midtrans-error', [MidtransController::class, 'errorRedirect']);
 Route::middleware(['auth'])->group(function () {
     Route::get('cart', [CartController::class, 'viewcart']);
     Route::get('checkout', [CheckoutController::class, 'index']);
+    Route::get('city/{id}', [CheckoutController::class, 'kota']);
+    Route::get('tarif/{des}/{wg}/{cour}', [CheckoutController::class, 'tarif'])->name('tarif');
     Route::post('place-order', [CheckoutController::class, 'placeorder']);
     
     Route::get('my-orders', [UserController::class, 'index']);

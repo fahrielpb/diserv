@@ -124,6 +124,9 @@
     @endif
     @yield('scripts')
 
+
+    @stack('ongkir');
+
 </body>
 
 </html>
