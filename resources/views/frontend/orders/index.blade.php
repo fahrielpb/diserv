@@ -27,24 +27,26 @@ My Orders
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Order ID</th>
+                                    {{-- <th></th> --}}
+                                    <th>Invoice</th>
                                     <th>Order Date</th>
-                                    <th>Tracking Number</th>
                                     <th>Total Price</th>
-                                    <th>Status</th>
+                                    <th>Payment Status</th>
+                                    <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($orders as $item)
                                     <tr>
+                                        {{-- <td>{{ $item->tracking_no }}</td> --}}
                                       <td>INV{{ date('dmy', strtotime($item->created_at)) }}/DSRV/{{ $item->id }}</td>
                                         <td>{{ date('d F Y', strtotime($item->created_at)) }}
                                         </td>
-                                        <td>{{ $item->tracking_no }}</td>
                                         <td>@currency($item->total_price )</td>
                                         {{-- <td>{{ $item->status == '0' ?'Packed' : 'Completed'}}
                                         </td> --}}
+                                        <td> {{ $item->payment_status }}</td>
                                         <td>
                                             @if ($item->status == '0') Packed
                                             @elseif ($item->status == '1') Sent

@@ -66,8 +66,9 @@ Checkout Products
                                 </div>
 
                                  <div class="form-group col-sm-6">
+                                    <label for="province">Province</label>
                                     <select name="province_destination" id="province" required placeholder="Province" class="form-control provinsi">
-                                    <option value=""> Pilih Provinsi</option>    
+                                    <option value="">Choose Province</option>    
                                         @foreach($prov as $row)
                                         <option value="{{$row['province_id']}}">{{$row['province']}}</option>
                                         @endforeach
@@ -75,41 +76,11 @@ Checkout Products
                                     <span id="provinsi_error" class="text-danger"></span>
                                 </div> 
 
-                                <div class="form-group col-sm-6">                                    
-                                    <select class="form-control" id="kota" disabled required>
-                                        <option value=""> Pilih Kota</option>            
+                                <div class="form-group col-sm-6"> 
+                                    <label for="kota">City</label>                                   
+                                    <select class="form-control" id="kota" name="kota" disabled required>
+                                        <option value="">Choose City</option>            
                                     </select>           
-                                </div>
-
-                                <div class="form-group col-sm-6 d-none">
-                                    <div class="input-group">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Berat</span>
-                                            </div>
-                                            <input type="number" value="1" min="1" class="form-control" id="berat" name="berat"> 
-                                            <div class="input-group-append">
-                                            <span class="input-group-text">Kg</span>
-                                            </div>
-                                    </div>
-                                </div> 
-
-                                <div class="form-group col-sm-6">                                    
-                                <select class="form-control" id="kurir" disabled>
-                                    <option value=""> Pilih Kurir</option>
-                                    <option value="jne">JNE</option>
-                                    <option value="tiki">TIKI</option>
-                                    <option value="pos">POS Indonesia</option>
-                                </select> 
-                                </div>
-
-                                <div class="form-group col-sm-12">
-                                <select class="form-control" id="layanan" disabled>
-                                    <option value=""> Pilih Layanan</option>                    
-                                </select> 
-                                </div>
-
-                                <div class="form-group col-sm-12">
-                                    <div id="hasil"></div>
                                 </div>
 
                                 <div class="form-group col-sm-6">
@@ -148,14 +119,42 @@ Checkout Products
                                     <span id="kode_pos_error" class="text-danger"></span>
 
                                 </div>
+
+                                <div class="form-group col-sm-6 d-none">
+                                    <div class="input-group">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Berat</span>
+                                            </div>
+                                            <input type="number" value="1" min="1" class="form-control" id="berat" name="berat"> 
+                                            <div class="input-group-append">
+                                            <span class="input-group-text">Kg</span>
+                                            </div>
+                                    </div>
+                                </div> 
+
+                                <div class="form-group col-sm-6">
+                                <label for="kurir">Courier</label>                                  
+                                <select class="form-control" id="kurir" disabled>
+                                    <option value="">Choose Courier</option>
+                                    <option value="jne">JNE</option>
+                                    <option value="tiki">TIKI</option>
+                                    <option value="pos">POS Indonesia</option>
+                                </select> 
+                                </div>
+
+                                <div class="form-group col-sm-12">
+                                <label for="layanan">Service</label>                                  
+                                <select class="form-control" id="layanan" disabled>
+                                    <option value="">Choose Service</option>                    
+                                </select> 
+                                </div>
+
+                                <div class="form-group col-sm-12">
+                                    <div id="hasil"></div>
+                                </div>
+
+                                
                             </div> <!-- row.// -->
-                    </div> <!-- card-body.// -->
-                </article> <!-- card.// -->
-
-                <article class="card mb-4">
-                    <div class="card-body">
-                        <h4 class="card-title mb-4">Shipping Service</h4>
-
                     </div> <!-- card-body.// -->
                 </article> <!-- card.// -->
 
@@ -205,7 +204,7 @@ Checkout Products
                                 You will be redirected to another page to complete the payment.
                             </p>
                             @if($total>1)
-                            <button type="submit" class="btn btn-primary btn-block">Checkout</button>
+                            <button type="submit" class="btn btn-primary btn-block">Place Order</button>
                             {{-- <button type="button" class="btn btn-primary btn-block pay-btn">Pay Now</button> --}}
 
                             @else

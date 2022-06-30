@@ -28,12 +28,12 @@
                                 <a href="#"><img
                                         src="{{ asset('assets/uploads/products/'.$products->image) }}"></a>
                             </div> <!-- img-big-wrap.// -->
-                            {{-- <div class="thumbs-wrap">
-	  <a href="#" class="item-thumb"> <img src="../images/items/1.jpg"></a>
-	  <a href="#" class="item-thumb"> <img src="../images/items/2.jpg"></a>
-	  <a href="#" class="item-thumb"> <img src="../images/items/3.jpg"></a>
-	  <a href="#" class="item-thumb"> <img src="../images/items/4.jpg"></a>
-	</div> <!-- thumbs-wrap.// --> --}}
+                            <div class="thumbs-wrap">
+                                <a href="#" class="item-thumb"> <img src="../images/items/1.jpg"></a>
+                                <a href="#" class="item-thumb"> <img src="../images/items/2.jpg"></a>
+                                <a href="#" class="item-thumb"> <img src="../images/items/3.jpg"></a>
+                                <a href="#" class="item-thumb"> <img src="../images/items/4.jpg"></a>
+                            </div> <!-- thumbs-wrap.// -->
                         </article> <!-- gallery-wrap .end// -->
                     </aside>
                     <main class="col-sm-6">
