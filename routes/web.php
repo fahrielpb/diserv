@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -71,6 +73,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('edit-category/{id}', [CategoryController::class,'edit']);
     Route::put('update-category/{id}', [CategoryController::class, 'update']);
     Route::get('delete-category/{id}', [CategoryController::class, 'destroy']);
+    Route::resource('size', SizeController::class);
+    Route::resource('color', ColorController::class);
 
     Route::get('products', [ProductController::class, 'index']);
     Route::get('add-products', [ProductController::class, 'add']);

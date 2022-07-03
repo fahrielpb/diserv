@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+  @extends('layouts.admin')
 
 @section('content')
     <div class="card">
@@ -6,7 +6,7 @@
         <h4>Add Product</h4>
       </div>
 
-      <div class="card-body">
+      <div class="card-body lst">
         <form action="{{ url('insert-product') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="row">
@@ -119,10 +119,27 @@
           </div>
 
           <div class="row">
-            <div class="col-md-6 mb-3">
-              <input type="file" name="image" class="form-control">
+            <div class="col-md-4">
+              <select class="form-select" multiple name="size[]">                
+                  @foreach ($size as $item)
+                      <option value="{{ $item->name }}">{{ $item->name }}</option>
+                  @endforeach
+                </select>
+            </div>
+            <div class="col-md-4">
+              <select class="form-select" name="color[]" multiple>                
+                  @foreach ($color as $item)
+                      <option value="{{ $item->name }}">{{ $item->name }}</option>
+                  @endforeach
+                </select>
             </div>
           </div>
+
+          <div class="row py-3">
+            <div class="col-md-12 mb-3">
+              <input type="file" name="filenames[]" class="form-control-file border" style="width:50%" autocomplete="off" multiple>
+              </div>                    
+            </div>
 
           <div class="row">
             <div class="col-md-6">
@@ -134,4 +151,5 @@
         </form>
       </div>
     </div>
+
 @endsection

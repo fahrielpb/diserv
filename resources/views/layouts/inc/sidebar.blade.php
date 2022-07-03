@@ -19,6 +19,24 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link text-white {{ Request::is('size') ? 'active bg-gradient-primary':'' }}" href="{{ url('size') }}">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="material-icons opacity-10">apps</i>            
+          </div>
+          <span class="nav-link-text ms-1">Size</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white {{ Request::is('color') ? 'active bg-gradient-primary':'' }}" href="{{ url('color') }}">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="material-icons opacity-10">apps</i>            
+          </div>
+          <span class="nav-link-text ms-1">Color</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link text-white {{ Request::is('categories') ? 'active bg-gradient-primary':'' }}" href="{{ url('categories') }}">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">apps</i>

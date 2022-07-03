@@ -134,7 +134,7 @@ Checkout Products
 
                                 <div class="form-group col-sm-6">
                                 <label for="kurir">Courier</label>                                  
-                                <select class="form-control" id="kurir" disabled>
+                                <select class="form-control kurir" id="kurir" required disabled>
                                     <option value="">Choose Courier</option>
                                     <option value="jne">JNE</option>
                                     <option value="tiki">TIKI</option>
@@ -144,7 +144,7 @@ Checkout Products
 
                                 <div class="form-group col-sm-12">
                                 <label for="layanan">Service</label>                                  
-                                <select class="form-control" id="layanan" disabled>
+                                <select class="form-control layanan" name="shipping" id="layanan" required disabled>
                                     <option value="">Choose Service</option>                    
                                 </select> 
                                 </div>
@@ -169,13 +169,16 @@ Checkout Products
                                 $total = 0;
                             @endphp
                             @foreach($cartitems as $item)
+                                @php $image = json_decode($item->products->image); @endphp
                                 <div class="card-body">
                                     <figure class="itemside">
                                         <div class="aside"><img
-                                                src="{{ asset('assets/uploads/products/'.$item->products->image) }}"
+                                                src="{{ asset('assets/uploads/image/'.$image[0]) }}"
                                                 class="border img-sm"></div>
                                         <figcaption class="info">
                                             <p>{{ $item->products->name }}</p>
+                                            <p>Color : {{$item->color}}</p>
+                                            <p>Size : {{$item->size}}</p>
                                             <span class="text-muted">{{ $item->prod_qty }} x
                                                 @currency($item->products->selling_price)</span>
                                         </figcaption>
@@ -193,7 +196,7 @@ Checkout Products
                             <hr>
                             <dl class="dlist-align">
                                 <dt>Shipping Cost :</dt>
-                                <dd class="h6" id="shipping"></dd>
+                                <dd class="h6" id="shipping"></dd>                                
                             </dl>
                             <dl class="dlist-align">
                                 <dt>Total :</dt>

@@ -51,10 +51,18 @@ My Orders
                     <div class="table-responsive">
                         <table class="table table-hover">
                             @foreach($orders->orderitems as $item)
+                            @php $image = json_decode($item->products->image); @endphp
                                 <tr>
                                     <td>
-                                        <img src="{{ asset('assets/uploads/products/'.$item->products->image) }}"
+                                        <img src="{{ asset('assets/uploads/image/'.$image[0]) }}"
                                             class="img border" width="55px">
+                                               @if($item->color)
+                                                <p>Color : {{$item->color}}</p>
+                                                @endif
+                                                
+                                                @if($item->size)
+                                                <p>Size : {{$item->size}}</p>
+                                                @endif
                                     </td>
                                     <td>
                                         <p class="title mb-0">{{ $item->products->name }} </p>

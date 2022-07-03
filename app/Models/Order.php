@@ -25,10 +25,12 @@ class Order extends Model
         'kelurahan',
         'kode_pos',
         'total_price',
+        'ongkir',
         'status',
         'payment_status',
         'message',
         'tracking_no',
+        'mid'
     ];
 
     public function orderitems()

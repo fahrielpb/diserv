@@ -14,17 +14,24 @@ class CartController extends Controller
     public function addProduct(Request $request)
     {
       $product_id = $request->input('product_id');
-      $product_qty = $request->input('product_qty');
+      $product_qty = $request->input('product_qty');    
+      $color = $request->input('color');    
+      $size = $request->input('size');    
 
       if(Auth::check())
       {
         $prod_check = Product::where('id', $product_id)->first();
 
         if($prod_check)
-        {
+        {             
             if(Cart::where('prod_id', $product_id)->where('user_id', Auth::id())->exists())
             {
-                return response()->json(['status' => $prod_check->name. " Already Added to Cart"]);
+                $cart = Cart::where('prod_id', $product_id)->where('user_id', Auth::id())->first();
+                $cart->prod_qty = $product_qty + $cart->prod_qty;
+                $cart->color = $color;
+                $cart->size = $size;
+                $cart->update();
+                return response()->json(['status'=> $prod_check->name. " updated!"]);
             }
             else
             {
@@ -32,6 +39,8 @@ class CartController extends Controller
                 $cartItem->prod_id = $product_id;
                 $cartItem->user_id = Auth::id();
                 $cartItem->prod_qty = $product_qty;
+                $cartItem->color = $color;
+                $cartItem->size = $size;
                 $cartItem->save();
                 return response()->json(['status' => $prod_check->name. " Added to Cart"]);
             }
@@ -46,6 +55,7 @@ class CartController extends Controller
     public function viewcart()
     {
       $cartitems = Cart::where('user_id', Auth::id())->get();
+
       $categories = Category::get();
       return view('frontend.cart', compact('cartitems','categories'));
     }

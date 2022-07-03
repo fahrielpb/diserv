@@ -30,7 +30,8 @@ Wishlist
                           @foreach ($wishlist as $item)
                             <div class="col-md-4 product_data">
                                 <figure class="itemside mb-4">
-                                    <div class="aside"><img src="{{ asset('assets/uploads/products/'.$item->products->image) }}" class="border img-md"></div>
+                                          @php $image = json_decode($item->products->image); @endphp
+                                    <div class="aside"><img src="{{ asset('assets/uploads/image/'.$image[0]) }}" class="border img-md"></div>
                                     <figcaption class="info">
                                         <a href="#" class="title">{{ $item->products->name }}</a>
                                         {{-- <span class="text-muted">{{ $item->products->cate_id }}</span> --}}

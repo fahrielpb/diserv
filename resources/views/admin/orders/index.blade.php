@@ -34,7 +34,7 @@ Orders
                                 </td>
                                 <td>{{ $item->tracking_no }}</td>
                                 <td>@currency($item->total_price )</td>
-                                <td>{{ $item->status == '0' ?'Pending' : 'Completed' }}
+                                <td>{{ $item->payment_status != '3' ?'Pending' : 'Completed' }}
                                 </td>
                                 <td>
                                     <a href="{{ url('admin/view-order/'.$item->id) }}"

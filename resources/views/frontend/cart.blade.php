@@ -23,6 +23,7 @@ My Cart
                 $total = 0;
             @endphp
             @foreach($cartitems as $item)
+                @php $image = json_decode($item->products->image); @endphp
                 <div class="product_data">
                     <div class="row">
                         <aside class="col-md-12">
@@ -30,12 +31,20 @@ My Cart
                                 <div class="row align-items-center">
                                     <div class="col-md-6">
                                         <figure class="itemside">
+                                     
                                             <div class="aside"><img
-                                                    src="{{ asset('assets/uploads/products/'.$item->products->image) }}"
+                                                    src="{{ asset('assets/uploads/image/'.$image[0]) }}"
                                                     class="border img-sm"></div>
                                             <figcaption class="info">
                                                 <span class="text-muted">{{ $item->categories }}</span>
                                                 <a href="#" class="title">{{ $item->products->name }}</a>
+                                                @if($item->color)
+                                                <p>Color : {{$item->color}}</p>
+                                                @endif
+                                                
+                                                @if($item->size)
+                                                <p>Size : {{$item->size}}</p>
+                                                @endif
                                             </figcaption>
                                         </figure>
                                     </div> <!-- col.// -->
@@ -93,11 +102,11 @@ My Cart
                       <dd class="text-right text-dark b"><strong>@currency($total)</strong></dd>
                     </dl>
                     <hr>
-                    {{-- @if($cartitems->count()>0) --}}
+                     @if($cartitems->count()>0)
                     <a href="{{ url('checkout') }}" class="btn btn-primary btn-block"> Checkout </a>
-                    {{-- @else
+                     @else
                     <a href="{{ url('checkout') }}" class="btn btn-primary btn-block disabled" role="button"> Checkout </a>
-                    @endif --}}
+                    @endif 
                     <a href="{{ url('/') }}" class="btn btn-light btn-block">Continue Shopping</a>
                 </div> <!-- card-body.// -->
             </aside> <!-- col.// -->

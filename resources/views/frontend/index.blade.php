@@ -18,7 +18,8 @@
         @foreach ($featured_products as $prod)
           <div class="col-md-3">
             <div href="#" class="card card-product-grid">
-              <a href="{{ url('category/'.$prod->category->slug.'/'.$prod->slug) }}" class="img-wrap"> <img src="{{ asset('assets/uploads/products/'.$prod->image) }}" alt="Product Image"> </a>
+            @php $image = json_decode($prod->image); @endphp
+              <a href="{{ url('category/'.$prod->category->slug.'/'.$prod->slug) }}" class="img-wrap"> <img src="{{ asset('assets/uploads/image/'.$image[0]) }}" alt="Product Image"> </a>
               <figcaption class="info-wrap">
                 <a href="#" class="title">{{ $prod->name }}</a>
                 <div class="price2 mt-1 text-muted"><small><s> @currency($prod->original_price) </s></small></div> <!-- price-wrap.// -->
