@@ -17,6 +17,8 @@
     <!-- jQuery -->
     {{-- <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}" type="text/javascript"></script> --}}
     <script src="{{ asset('frontend/js/jquery-3.6.0.js') }}" type="text/javascript"></script>
+    
+    <script src="https://www.jacklmoore.com/js/jquery.zoom.js"></script>
 
     <!-- Bootstrap4 files-->
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet" type="text/css" />
@@ -31,6 +33,7 @@
         rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://www.jqueryscript.net/demo/Image-Zoom-Hover-Magnifier/image-magnifier.css">
 
     <!-- Font awesome 5 -->
     <link href="{{ asset('frontend/fonts/fontawesome/css/all.min.css') }}" type="text/css"

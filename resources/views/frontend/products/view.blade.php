@@ -21,20 +21,24 @@
         <div class="container">
             <div class="card product_data">
                 {{-- <div class="card-body"> --}}
+
+
                 <div class="row no-gutters">
                     <aside class="col-sm-6 border-right">
-                        <article class="gallery-wrap">
-                            <div class="img-big-wrap">
-                                <a href="#"><img
-                                        src="{{ asset('assets/uploads/products/'.$products->image) }}"></a>
-                            </div> <!-- img-big-wrap.// -->
+                            <article class="gallery-wrap">
+                                
+                         @php $image = json_decode($products->image); @endphp
+                            <div class="img-big-wrap" id="zoom">
+                                <a href="#">
+                                    <img id="rc" src="{{ asset('assets/uploads/image/'.$image[0]) }}">
+                                </a>
+                            </div>
                             <div class="thumbs-wrap">
-                                <a href="#" class="item-thumb"> <img src="../images/items/1.jpg"></a>
-                                <a href="#" class="item-thumb"> <img src="../images/items/2.jpg"></a>
-                                <a href="#" class="item-thumb"> <img src="../images/items/3.jpg"></a>
-                                <a href="#" class="item-thumb"> <img src="../images/items/4.jpg"></a>
-                            </div> <!-- thumbs-wrap.// -->
-                        </article> <!-- gallery-wrap .end// -->
+                            @for ($i = 0; $i < count($image); $i++)    
+                        	  <a href="#" class="item-thumb"><img class="sc" src="{{ asset('assets/uploads/image/'.$image[$i]) }}"></a>
+                        	     @endfor
+                        	</div>
+                              </article>
                     </aside>
                     <main class="col-sm-6">
                         <article class="content-body">
@@ -59,13 +63,29 @@
                             </div> <!-- price-wrap.// -->
 
                             <div class="row">
-                                <div class="form-group col-md">
-                                    <label>Select size</label>
-                                    <div class="mt-2">
-                                        <select class="mr-2 form-control col-2">
-                                            <option>Size</option>
+                                <div class="form-group col-md">   
+                                
+                                    @if($products->size != 'null')              
+                                    <div class="py-3">
+                                        <label>Size : </label>
+                                        <select class="mr-2 form-control col-2" require id="size" name="size">
+                                            @foreach(json_decode($products->size) as $row)
+                                            <option value="{{$row}}">{{$row}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
+                                    @endif
+
+                                    @if($products->color != 'null')
+                                    <div class="py-3">
+                                        <label>Color :</label>
+                                        <select class="mr-2 form-control col-2" id="color" require name="color">                                            
+                                            @foreach(json_decode($products->color) as $row)
+                                            <option value="{{$row}}">{{$row}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @endif
                                 </div> <!-- col.// -->
                             </div> <!-- row.// -->
 
@@ -112,4 +132,21 @@
             </div> <!-- card.// -->
         </div> <!-- container .//  -->
     </section>
+
+
+    @push('ongkir')
+    <script>
+       $(".sc").click(function (e) {
+                e.preventDefault();
+                var a = $(this).attr('src');
+                $('#rc').attr('src',a);
+                $('#zoom').zoom({url: a});
+       });
+       
+      $(document).ready(function(){
+          var a = $('#rc').attr('src');
+          $('#zoom').zoom({url: a});
+        });
+    </script>
+    @endpush
     @endsection

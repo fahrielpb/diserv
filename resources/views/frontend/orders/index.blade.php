@@ -46,7 +46,7 @@ My Orders
                                         <td>@currency($item->total_price )</td>
                                         {{-- <td>{{ $item->status == '0' ?'Packed' : 'Completed'}}
                                         </td> --}}
-                                        <td> {{ $item->payment_status }}</td>
+                                        <td> {{ $item->payment_status != '3' ?'Pending' : 'Completed' }}</td>
                                         <td>
                                             @if ($item->status == '0') Packed
                                             @elseif ($item->status == '1') Sent

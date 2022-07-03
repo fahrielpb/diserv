@@ -20,6 +20,8 @@ class Product extends Model
         'image',
         'qty',
         'tax',
+        'size',
+        'color',
         'status',
         'trending',
         'meta_title',
@@ -33,4 +35,18 @@ public function category()
 
     return $this->belongsTo(Category::class, 'cate_id', 'id');
 }
+
+// public function color()
+// {
+
+//     return $this->belongsTo(Color::class, 'colors_id', 'id');
+// }
+
+// public function size()
+// {
+
+//     return $this->belongsTo(Size::class, 'sizes_id', 'id');
+// }
+
+
 }

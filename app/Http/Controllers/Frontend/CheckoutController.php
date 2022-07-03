@@ -30,24 +30,23 @@ class CheckoutController extends Controller
     public function index()
     {
         $prov = $this->prov();        
-        $old_cartitems = Cart::where('user_id', Auth::id())->get();
-        foreach($old_cartitems as $item)
-        {
-            if(!Product::where('id', $item->prod_id)->where('qty','>=',$item->prod_qty)->exists())
-            {
-                $removeItem = Cart::where('user_id', Auth::id())->where('prod_id', $item->prod_id)->first();
-                $removeItem->delete();
-            }
-        }
+
+        // $old_cartitems = Cart::where('user_id', Auth::id())->get();
+        // foreach($old_cartitems as $item)
+        // {
+        //     if(!Product::where('id', $item->prod_id)->where('qty','>=',$item->prod_qty)->exists())
+        //     {
+        //         $removeItem = Cart::where('user_id', Auth::id())->where('prod_id', $item->prod_id)->first();
+        //         $removeItem->delete();
+        //     }
+        // }
 
         $cartitems = Cart::where('user_id', Auth::id())->get();
         $categories = Category::get();
-        $order = Order::where('user_id',Auth::id())->first();
-        // dd($order);
+        $order = Order::where('user_id',Auth::id())->first();        
         return view('frontend.checkout', compact('cartitems', 'categories', 'order','prov')); 
 
     }
-
 
     private function prov()
     {
@@ -99,6 +98,7 @@ class CheckoutController extends Controller
 
     public function placeorder(Request $request)
     {
+        $mid = date("sHmdY");   
         $order = new Order();
         $order->user_id = Auth::id();
         $order->fname = $request->input('fname');
@@ -112,20 +112,25 @@ class CheckoutController extends Controller
         $order->kecamatan = $request->input('kecamatan');
         $order->kelurahan = $request->input('kelurahan');
         $order->kode_pos = $request->input('kode_pos');
+        $order->ongkir = $request->input('shipping');
+        $order->mid = $mid;
 
         // to calculate total price
         $total = 0;
         $cartitems_total = Cart::where('user_id', Auth::id())->get();
+
+        // dd($cartitems_total);
         foreach($cartitems_total as $prod)
         {
             // $total += $prod->products->selling_price;
+            // $total += $prod->products->selling_price * $prod->prod_qty;
             $total += $prod->products->selling_price * $prod->prod_qty;
         }
 
-        $order->total_price = $total;
+        $order->total_price = $total + $request->input('shipping');
 
         $order->tracking_no = 'dsrv'.rand(1111,9999);
-        $order->save();
+        $order->save();        
 
         $cartitems = Cart::where('user_id', Auth::id())->get();
         foreach($cartitems as $item)
@@ -135,6 +140,8 @@ class CheckoutController extends Controller
                 'prod_id' => $item->prod_id,
                 'qty' => $item->prod_qty,
                 'price' => $item->products->selling_price,
+                'color'=>$item->color,
+                'size'=>$item->size,
             ]);
 
             $prod = Product::where('id', $item->prod_id)->first();
@@ -155,8 +162,8 @@ class CheckoutController extends Controller
         // buat array u dikirim ke midtrans
         $midtrans_params = [
             'transaction_details' => [
-                'order_id' => 'MIDTRANSTEST-' . $order->id,
-                'gross_amount' => (int) $total
+                'order_id' => $mid,
+                'gross_amount' => (int) $order->total_price
             ],
 
             'customer_details' => [
@@ -177,6 +184,7 @@ class CheckoutController extends Controller
             
             // Redirect to Snap Payment Page
             header('Location: ' . $paymentUrl); 
+            die();
           }
           catch (Exception $e) {
             echo $e->getMessage();

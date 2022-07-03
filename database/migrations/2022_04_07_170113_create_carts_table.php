@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('prod_id')->constrained('products')->cascadeOnDelete();
             $table->string('prod_qty');
+            $table->string('size');
+            $table->string('color');
             $table->timestamps();
         });
     }

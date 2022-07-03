@@ -41,7 +41,10 @@
                       </td>
 
                       <td>
-                       <img src="{{ asset('assets/uploads/products/'.$item->image) }}" class="cate-image" alt="Image Here">
+                        @php
+                        $image = json_decode($item->image);                        
+                        @endphp
+                       <img src="{{ asset('assets/uploads/image/'.$image[0]) }}" class="cate-image" alt="Image Here">
                       </td>
 
                       <td>

@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('kecamatan');
             $table->string('kelurahan');
             $table->string('kode_pos');
+            $table->string('ongkir');
             $table->string('total_price');
             $table->tinyInteger('status')->default('0');
             $table->string('payment_status')->nullable();
